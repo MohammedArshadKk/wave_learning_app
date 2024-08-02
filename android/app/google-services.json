@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "134323372396",
+    "project_id": "wave-learning-app",
+    "storage_bucket": "wave-learning-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134323372396:android:ec4a08a87948617964f349",
+        "android_client_info": {
+          "package_name": "in.wave.wave_learning_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCARAsDi5TC6eARdOD_rT44clCkVG6fIQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
