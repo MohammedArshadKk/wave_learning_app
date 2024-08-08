@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wave_learning_app/view/widgets/custom%20widgets/custom_text.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/custom_text.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField(
@@ -34,6 +34,7 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         validator: validator,
+        maxLines: null,
         decoration: InputDecoration(
             filled: true,
             fillColor: color,

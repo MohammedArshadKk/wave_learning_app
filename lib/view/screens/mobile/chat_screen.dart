@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wave_learning_app/utils/colors.dart';
-import 'package:wave_learning_app/utils/images_fonts.dart';
-import 'package:wave_learning_app/view/widgets/custom%20widgets/custom_container.dart';
-import 'package:wave_learning_app/view/widgets/custom%20widgets/custom_text.dart';
-import 'package:wave_learning_app/view/widgets/custom%20widgets/custom_text_form_field.dart';
+import 'package:wave_learning_app/view/utils/colors.dart';
+import 'package:wave_learning_app/view/utils/images_fonts.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/custom_container.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/custom_text.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/custom_text_form_field.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -52,7 +52,7 @@ class ChatScreen extends StatelessWidget {
                 itemCount: 20,
                 itemBuilder: (ctx, index) {
                   return Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: ListTile(
                       leading: const CircleAvatar(
                         radius: 30,

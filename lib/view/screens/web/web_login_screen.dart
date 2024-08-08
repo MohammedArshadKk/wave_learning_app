@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wave_learning_app/utils/colors.dart';
-import 'package:wave_learning_app/utils/images_fonts.dart';
-import 'package:wave_learning_app/view/widgets/custom%20widgets/custom_image_asset.dart';
+import 'package:wave_learning_app/view/utils/colors.dart';
+import 'package:wave_learning_app/view/utils/images_fonts.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/custom_image_asset.dart';
 
 class WebLoginScreen extends StatelessWidget {
   const WebLoginScreen({super.key});

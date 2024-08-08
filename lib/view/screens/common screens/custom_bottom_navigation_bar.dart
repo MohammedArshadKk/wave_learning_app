@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_learning_app/utils/colors.dart';
+import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view%20model/blocs/bottom%20navigation%20bloc/bottom_navigation_bloc_bloc.dart';
 import 'package:wave_learning_app/view/screens/common%20screens/home_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/chat_bot_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/chat_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/profile_screen.dart';
-import 'package:wave_learning_app/view/widgets/custom%20widgets/custom_container.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/custom_container.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});

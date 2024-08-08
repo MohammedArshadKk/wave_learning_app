@@ -1,14 +1,12 @@
 class UserModel {
   final String? uid;
-  final String userName;
-  final String email;
-
+  final String? userName;
+  final String? email;
 
   UserModel({
-    required this.userName,
-    required this.email,
-     this.uid,
-
+    this.userName,
+    this.email,
+    this.uid,
   });
 
   Map<String, dynamic> toMap() {

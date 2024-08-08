@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:wave_learning_app/utils/colors.dart';
-import 'package:wave_learning_app/utils/icons.dart';
+import 'package:wave_learning_app/view/utils/colors.dart';
+import 'package:wave_learning_app/view/utils/icons.dart';
 import 'package:wave_learning_app/view/screens/mobile/mobile_login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                 GestureDetector(
                     onTap: ()async {
                      await _auth.signOut();
-                     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx)=>MobileLoginScreen()), (route) => false,);
+                     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx)=>const MobileLoginScreen()), (route) => false,);
                     },
                     child: AppIcons.uploadIcon)
               ],

@@ -12,7 +12,7 @@ class AuthRepository {
 
   signUpWithEmailAndPassword(UserModel user, String password) async {
     final UserCredential userCredential = await _auth
-        .createUserWithEmailAndPassword(email: user.email, password: password);
+        .createUserWithEmailAndPassword(email: user.email.toString(), password: password);
     return userCredential.user;
   }
 
@@ -34,6 +34,8 @@ class AuthRepository {
           accessToken: googleSignInAuthentication.accessToken);
       final userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
+      log(userCredential.user!.email.toString());
+      log(userCredential.user!.displayName.toString());
       return userCredential.user;
     }
   }
@@ -50,17 +52,39 @@ class AuthRepository {
   }
 
   addUserToDatabase(String name) async {
-   
-        try {
-           final user = UserModel(
-        uid: _auth.currentUser!.uid,
-        userName: name,
-        email: _auth.currentUser!.email.toString());
-          await db.collection('users').doc().set(user.toMap());
-          log('added');
-        } catch (e) {
-          log("error$e");
-        }
-    
+    try {
+      final user = UserModel(
+          uid: _auth.currentUser!.uid,
+          userName: name,
+          email: _auth.currentUser!.email.toString());
+      await db.collection('users').doc().set(user.toMap());
+      log('added');
+    } catch (e) {
+      log("error$e");
+    }
+  }
+
+  saveGoogleUserToDatabase() async {
+    final isNotExists =
+        await checkEmailElreadyExists(_auth.currentUser!.email.toString());
+    try {
+      if (isNotExists) {
+        final user = UserModel(
+            uid: _auth.currentUser!.uid,
+            userName: _auth.currentUser!.displayName.toString(),
+            email: _auth.currentUser!.email.toString());
+        await db.collection('users').doc().set(user.toMap());
+        log('added');
+      } else {}
+    } catch (e) {
+      log("error$e");
+    }
+  }
+
+  Future<bool> checkEmailElreadyExists(String email) async {
+    final QuerySnapshot data =
+        await db.collection('users').where('email', isEqualTo: email).get();
+    final document = data.docs;
+    return document.isEmpty;
   }
 }

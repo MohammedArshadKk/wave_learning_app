@@ -1,14 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_learning_app/utils/colors.dart';
-import 'package:wave_learning_app/utils/images_fonts.dart';
+import 'package:wave_learning_app/view/utils/colors.dart';
+import 'package:wave_learning_app/view/utils/images_fonts.dart';
 import 'package:wave_learning_app/view%20model/blocs/authentication%20bloc/authentication_bloc.dart';
-import 'package:wave_learning_app/view/screens/common%20screens/custom_bottom_navigation_bar.dart';
-import 'package:wave_learning_app/view/widgets/custom%20widgets/custom_container.dart';
-import 'package:wave_learning_app/view/widgets/custom%20widgets/custom_image_asset.dart';
-import 'package:wave_learning_app/view/widgets/custom%20widgets/custom_text.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/custom_container.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/custom_image_asset.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/custom_text.dart';
 
 class VerificationScreen extends StatelessWidget {
   VerificationScreen({super.key});

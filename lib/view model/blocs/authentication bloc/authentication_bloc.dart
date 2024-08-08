@@ -3,12 +3,11 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
-import 'package:wave_learning_app/model/repositories/auth_repository.dart';
+import 'package:wave_learning_app/services/repositories/auth/auth_repository.dart';
 import 'package:wave_learning_app/model/user_model.dart';
 import 'package:wave_learning_app/view/screens/common%20screens/custom_bottom_navigation_bar.dart';
 part 'authentication_event.dart';
-part 'authentication_state.dart';
+part 'authentication_state.dart';    
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
@@ -30,13 +29,13 @@ class AuthenticationBloc
       final user = await authRepository.signUpWithEmailAndPassword(
           event.user, event.password);
       if (user != null) {
-        authRepository.addUserToDatabase(event.user.userName);
+        authRepository.addUserToDatabase(event.user.userName.toString());
         _auth.currentUser!.sendEmailVerification();
         emit(AuthenticatedState(user));
       } else {
         emit(UnAuthenticatedState());
       }
-    } catch (e) {
+    } catch (e) {  
       log(e.toString());
       emit(AuthErrorState(error: e.toString()));
     }
@@ -65,6 +64,7 @@ class AuthenticationBloc
     try {
       final user = await authRepository.signInWithGoogle();
       if (user != null) {
+      await authRepository.saveGoogleUserToDatabase();
         emit(SignInWithGooglestate(user));
       } else {
         emit(UnAuthenticatedState());
@@ -111,4 +111,5 @@ class AuthenticationBloc
       log('$e');
     }
   }
+
 }

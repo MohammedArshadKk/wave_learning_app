@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wave_learning_app/utils/colors.dart';
-import 'package:wave_learning_app/utils/images_fonts.dart';
-import 'package:wave_learning_app/view/widgets/custom%20widgets/custom_text.dart';
+import 'package:wave_learning_app/view/utils/colors.dart';
+import 'package:wave_learning_app/view/utils/images_fonts.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/custom_text.dart';
 
 class CustomImageAsset extends StatelessWidget {
   const CustomImageAsset(
@@ -21,7 +21,6 @@ class CustomImageAsset extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(padding),
       child: SizedBox(
-        // color: Colors.amber,
           height: height,
           width: width,
           child: Column(
