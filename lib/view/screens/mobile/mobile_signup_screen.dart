@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view%20model/blocs/authentication%20bloc/authentication_bloc.dart';
+import 'package:wave_learning_app/view_model/blocs/authentication%20bloc/authentication_bloc.dart';
 import 'package:wave_learning_app/view/screens/common%20screens/custom_bottom_navigation_bar.dart';
 import 'package:wave_learning_app/view/screens/mobile/verification_screen.dart';
 import 'package:wave_learning_app/view/utils/custom%20widgets/custom_loading.dart';

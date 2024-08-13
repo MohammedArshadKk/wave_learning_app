@@ -2,9 +2,15 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-class EditIconSelectedWedget extends StatelessWidget {
+class EditIconSelectedWedget extends StatefulWidget {
   const EditIconSelectedWedget({super.key, required this.icon});
   final File icon;
+
+  @override
+  State<EditIconSelectedWedget> createState() => _EditIconSelectedWedgetState();
+}
+
+class _EditIconSelectedWedgetState extends State<EditIconSelectedWedget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,7 +24,7 @@ class EditIconSelectedWedget extends StatelessWidget {
             border: Border.all(),
           ),
           child: Image.file(
-            icon,
+            widget.icon,
             fit: BoxFit.fill,
           ),
         ),

@@ -6,6 +6,7 @@ class AppImages {
   static String verifyImage= 'assets/images/undraw_Authentication_re_svpt.png';
   static String forgotPasswordImage='assets/images/undraw_Forgot_password_re_hxwm.png';
   static String addChannelIconimage='assets/images/add_channel_icon_image.png';
+  static String uploadVideo='assets/images/video_upload.png';
 }
 
 class Fonts {

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_learning_app/view%20model/blocs/fetch%20user%20data%20bloc/fetchuserdata_bloc.dart';
+import 'package:wave_learning_app/view_model/blocs/fetch%20user%20data%20bloc/fetchuserdata_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom%20widgets/custom_container.dart';
 import 'package:wave_learning_app/view/utils/custom%20widgets/custom_text.dart';

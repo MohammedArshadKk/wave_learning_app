@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_learning_app/view%20model/blocs/channel%20createtion%20bloc/channel_creation_bloc.dart';
-import 'package:wave_learning_app/view%20model/blocs/check%20channel%20created%20or%20not/channel_created_or_not_bloc.dart';
-import 'package:wave_learning_app/view%20model/blocs/get%20channel%20details%20bloc/get_channel_details_bloc.dart';
+import 'package:wave_learning_app/view_model/blocs/channel%20createtion%20bloc/channel_creation_bloc.dart';
+import 'package:wave_learning_app/view_model/blocs/check%20channel%20created%20or%20not/channel_created_or_not_bloc.dart';
+import 'package:wave_learning_app/view_model/blocs/get%20channel%20details%20bloc/get_channel_details_bloc.dart';
 import 'package:wave_learning_app/view/utils/custom%20widgets/custom_loading.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/widgets/create%20channel%20widgets/channel_create_text_form_filed.dart';
@@ -80,7 +80,7 @@ class _CreateChannelScreenState extends State<CreateChannelScreen> {
               } else {
                 if (state is PickedIconState) {
                   icon = state.channelIcon;
-                  return CreateIconPickedWidget(icon: state.channelIcon);
+                  return CreateIconPickedWidget(icon: icon!);
                 }
                 return const CreateChannelIconNonSelectedWedget();
               }
@@ -102,7 +102,7 @@ class _CreateChannelScreenState extends State<CreateChannelScreen> {
                 context
                     .read<GetChannelDetailsBloc>()
                     .add(FetchChanneldetailsEvent(uid: _auth.currentUser!.uid));
-                icon = null;
+                // icon = null;
               } else if (state is ChannelCreatedstate) {
                 Navigator.pop(context);
                 channelNameController.clear();
@@ -117,22 +117,27 @@ class _CreateChannelScreenState extends State<CreateChannelScreen> {
                     content: Text('You already created a channel')));
               }
             },
-            child: Form(
-              key: _formKey,
-              child: ChannelCreateTextFormFiled(
-                  channelNameController: channelNameController,
-                  channelDescriptionController: channelDescriptionController,
-                  channelfocusedSubjectController:
-                      channelfocusedSubjectController),
+            child: Column(
+              children: [
+                Form(
+                  key: _formKey,
+                  child: ChannelCreateTextFormFiled(
+                      channelNameController: channelNameController,
+                      channelDescriptionController:
+                          channelDescriptionController,
+                      channelfocusedSubjectController:
+                          channelfocusedSubjectController),
+                ),
+                CreateButton(
+                    formKey: _formKey,
+                    channelNameController: channelNameController,
+                    descriptionController: channelDescriptionController,
+                    subjectController: channelfocusedSubjectController, 
+                    text: widget.text,
+                    documentid: widget.documentid.toString())
+              ],
             ),
           ),
-          CreateButton(
-              formKey: _formKey,
-              channelName: channelNameController.text,
-              description: channelDescriptionController.text,
-              subject: channelfocusedSubjectController.text,
-              text: widget.text,
-              documentid: widget.documentid.toString())
         ]),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wave_learning_app/view/screens/mobile/settings_screen.dart';
 import 'package:wave_learning_app/view/utils/app_strings.dart';
 import 'package:wave_learning_app/view/utils/icons.dart';
 import 'package:wave_learning_app/view/widgets/profile%20widgets/profile_grid_view_item.dart';
@@ -10,7 +11,9 @@ class GridSettingsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProfileGridViewItomWidget(
         text: AppStrings.settingsText,
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>SettingsScreen()));
+        },
         icon: AppIcons.settingsIcon);
   }
 }

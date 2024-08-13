@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_learning_app/view%20model/blocs/check%20channel%20created%20or%20not/channel_created_or_not_bloc.dart';
-import 'package:wave_learning_app/view%20model/blocs/fetch%20user%20data%20bloc/fetchuserdata_bloc.dart';
+import 'package:wave_learning_app/view_model/blocs/check%20channel%20created%20or%20not/channel_created_or_not_bloc.dart';
+import 'package:wave_learning_app/view_model/functions/init_functions.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/widgets/profile%20widgets/about_channel_widget.dart';
 import 'package:wave_learning_app/view/widgets/profile%20widgets/create_channel_grid_widget.dart';
@@ -23,16 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   initState() {
-    final isChannelCreated = context.read<ChannelCreatedOrNotBloc>();
-    if (isChannelCreated.state is ChannelCreatedOrNotInitial) {
-      isChannelCreated
-          .add(ChekingChannelcreatedEvent(uid: _auth.currentUser!.uid));
-    }
-
-    final fetchUser = context.read<FetchuserdataBloc>();
-    if (fetchUser.state is FetchuserdataInitial) {
-      fetchUser.add(UserDataFetchingEvent(uid: _auth.currentUser!.uid));
-    }
+    profileInit(context, _auth.currentUser!.uid);
     super.initState();
   }
 

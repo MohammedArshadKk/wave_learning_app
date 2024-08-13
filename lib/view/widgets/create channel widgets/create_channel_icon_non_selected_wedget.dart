@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_learning_app/view%20model/blocs/channel%20createtion%20bloc/channel_creation_bloc.dart';
+import 'package:wave_learning_app/view_model/blocs/channel%20createtion%20bloc/channel_creation_bloc.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
 
 class CreateChannelIconNonSelectedWedget extends StatelessWidget {
