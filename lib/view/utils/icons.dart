@@ -24,6 +24,7 @@ class AppIcons {
   static IconData addedTochannelIcon = Icons.subscriptions_outlined;
   static IconData chatIcon = Icons.chat_outlined;
   static IconData meetingIcon = Icons.video_call_outlined;
+  static IconData addThumbnail= Icons.add_photo_alternate_outlined;
   // static IconData chatIcon = Icons.chat_outlined;
   // static IconData chatIcon = Icons.chat_outlined;   
 }
