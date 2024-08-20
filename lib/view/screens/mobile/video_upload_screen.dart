@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,7 +60,10 @@ class VideoUploadScreen extends StatelessWidget {
                 formKey: formKey,
               ),
               InkWell(
+                
                 onTap: () {
+                  log(tagsController.text);
+                  log(tagsController.text);
                   if (videoUrl == null) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         backgroundColor: AppColors.alertColor,

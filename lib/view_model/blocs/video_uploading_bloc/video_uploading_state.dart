@@ -23,19 +23,7 @@ class ThumbnailPikedState extends VideoUploadingState {
   ThumbnailPikedState({required this.thumbnailPath});
 }
 
-class UpdateProgressState extends VideoUploadingState {
-  final List<Map<String, dynamic>> uploads;
-
-  UpdateProgressState({required this.uploads});
+class ThumbnailGeneratedState extends VideoUploadingState {
+  final String thumbnail;
+  ThumbnailGeneratedState({required this.thumbnail});
 }
-
-
-class UploadCompletedState extends VideoUploadingState {}
-
-class UploadFailedState extends VideoUploadingState {
-  final String error;
-
-  UploadFailedState({required this.error});
-}
-
-class UploadLoadingState extends VideoUploadingState {}

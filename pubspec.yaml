@@ -54,6 +54,10 @@ dependencies:
   textfield_tags: ^3.0.1
   shared_preferences: ^2.3.2
   workmanager: ^0.5.2
+  flutter_local_notifications: ^17.2.2
+  video_thumbnail: ^0.5.3
+  path_provider: ^2.1.4
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

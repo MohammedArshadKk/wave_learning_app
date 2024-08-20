@@ -4,9 +4,9 @@ class VideoModel {
   final String channelName;
   final String description;
   final String email;
-  final String videoUrl;
-  final String thumbnailUrl;
-  final String time;
+   String videoUrl;
+   String thumbnailUrl;
+   String time;
   final List<String>? tags;
   final List<String> likes;
 

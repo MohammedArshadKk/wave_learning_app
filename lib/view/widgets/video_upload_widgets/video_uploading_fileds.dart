@@ -81,7 +81,7 @@ class VideoUploadingFileds extends StatelessWidget {
                       textColor: AppColors.lightTextColor,
                       paddingForm: 30,
                       borderRadius: 12,
-                      controller: inputFieldValues.textEditingController,
+                      controller: tagsController,
                     ),
                   ],
                 );

@@ -26,7 +26,12 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                AppIcons.searchIcon,
+                GestureDetector(
+                  onTap: () {
+                    
+                  },
+                  child: AppIcons.searchIcon
+                  ),
                 const SizedBox(
                   width: 30,
                 ),

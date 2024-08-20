@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wave_learning_app/view/screens/mobile/mobile_login_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/widgets/settings%20widgets/app_bar_text.dart';
+import 'package:wave_learning_app/view/utils/custom%20widgets/app_bar_text.dart';
 import 'package:wave_learning_app/view/widgets/settings%20widgets/settings_itoms_widgets.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -16,7 +16,7 @@ class SettingsScreen extends StatelessWidget {
         iconTheme: IconThemeData(color: AppColors.backgroundColor),
         backgroundColor: AppColors.primaryColor,
         toolbarHeight: 100,
-        title: const AppBarText(),
+        title: const AppBarText(text: 'Settings',),
       ),
       backgroundColor: AppColors.backgroundColor,
       body: Column(

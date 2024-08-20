@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wave_learning_app/view/screens/mobile/sam.dart';
+import 'package:wave_learning_app/view/screens/mobile/user_videos_screen.dart';
 import 'package:wave_learning_app/view/utils/app_strings.dart';
 import 'package:wave_learning_app/view/utils/icons.dart';
 import 'package:wave_learning_app/view/widgets/profile%20widgets/profile_grid_view_item.dart';
@@ -13,7 +13,7 @@ class GridUserVideosWidget extends StatelessWidget {
         text: AppStrings.userVideoText,
         onTap: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctx) =>  UploadPage()));
+              .push(MaterialPageRoute(builder: (ctx) =>  UserVideosScreen()));
         },
         icon: AppIcons.userVideoIcon);
   }
