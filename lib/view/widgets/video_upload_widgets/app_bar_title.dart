@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_text.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
 
 class AppBarTitle extends StatelessWidget {

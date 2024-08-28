@@ -4,13 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view_model/blocs/authentication%20bloc/authentication_bloc.dart';
 import 'package:wave_learning_app/view/screens/common%20screens/custom_bottom_navigation_bar.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_loading.dart';
-import 'package:wave_learning_app/view/widgets/authentication%20widgets/login%20widgets/dont_have_an_account_text_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication%20widgets/login%20widgets/forgot_password_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication%20widgets/login%20widgets/login_button_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication%20widgets/login%20widgets/login_image_widgets.dart';
-import 'package:wave_learning_app/view/widgets/authentication%20widgets/login%20widgets/login_text_form_widgets.dart';
-import 'package:wave_learning_app/view/widgets/authentication%20widgets/login%20widgets/sign_in_with_google_widget.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
+import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/dont_have_an_account_text_widget.dart';
+import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/forgot_password_widget.dart';
+import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/login_button_widget.dart';
+import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/login_image_widgets.dart';
+import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/login_text_form_widgets.dart';
+import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/sign_in_with_google_widget.dart';
 
 class MobileLoginScreen extends StatefulWidget {
   const MobileLoginScreen({super.key});

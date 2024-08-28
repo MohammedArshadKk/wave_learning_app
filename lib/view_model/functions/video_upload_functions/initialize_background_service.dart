@@ -34,6 +34,7 @@ void callbackDispatcher() async {
           thumbnailUrl: inputData['thumbnailUrl'] as String,
           time: inputData['time'] as String,
           tags: (inputData['tags'] as List?)?.cast<String>(),
+          watchLater: (inputData['watchLater']as List).cast<String>(),
         );
 
         try {

@@ -1,10 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_container.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_text.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/icons.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
 import 'package:wave_learning_app/view_model/blocs/video_uploading_bloc/video_uploading_bloc.dart';

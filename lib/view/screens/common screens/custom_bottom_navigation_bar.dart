@@ -6,7 +6,7 @@ import 'package:wave_learning_app/view/screens/mobile/home_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/chat_bot_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/chat_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/profile_screen.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_container.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
@@ -19,6 +19,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       const ProfileScreen()
     ];
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: BlocBuilder<BottomNavigationBlocBloc, BottomNavigationBlocState>(
           builder: (context, state) {
         int currentIndex =

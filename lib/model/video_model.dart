@@ -4,11 +4,13 @@ class VideoModel {
   final String channelName;
   final String description;
   final String email;
-   String videoUrl;
-   String thumbnailUrl;
-   String time;
+  String videoUrl;
+  String thumbnailUrl;
+  String time;
   final List<String>? tags;
   final List<String> likes;
+  final String? documentid;
+  final List<String> watchLater;  
 
   VideoModel({
     required this.title,
@@ -20,7 +22,9 @@ class VideoModel {
     required this.videoUrl,
     required this.thumbnailUrl,
     required this.time,
+    required this.watchLater,
     this.tags,
+    this.documentid,
   });
 
   Map<String, dynamic> toMap() {
@@ -35,11 +39,12 @@ class VideoModel {
       'videoUrl': videoUrl,
       'thumbnailUrl': thumbnailUrl,
       'time': time,
-      
+      'documentid': documentid,
+      'watchLater':watchLater,
     };
   }
 
-  factory VideoModel.fromMap(Map<String, dynamic> map) {
+  factory VideoModel.fromMap(Map<String, dynamic> map, {String? documentid}) {
     return VideoModel(
       title: map['title'] ?? '',
       uid: map['uid'] ?? '',
@@ -51,6 +56,8 @@ class VideoModel {
       videoUrl: map['videoUrl'] ?? '',
       thumbnailUrl: map['thumbnailUrl'] ?? '',
       time: map['time'] ?? '',
+      documentid: documentid,
+      watchLater: List<String>.from(map['watchLater'] ?? [])
     );
   }
 }

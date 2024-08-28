@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_learning_app/view_model/blocs/get%20channel%20details%20bloc/get_channel_details_bloc.dart';
+import 'package:wave_learning_app/view_model/blocs/get_channel_details_bloc/get_channel_details_bloc.dart';
 import 'package:wave_learning_app/view/screens/mobile/create_channel_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_loading.dart';
-import 'package:wave_learning_app/view/widgets/about%20channel%20widgets/about_image_widget.dart';
-import 'package:wave_learning_app/view/widgets/about%20channel%20widgets/channel_details_widget.dart';
-import 'package:wave_learning_app/view/widgets/about%20channel%20widgets/name_and_members.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
+import 'package:wave_learning_app/view/widgets/about_channel_widgets/about_image_widget.dart';
+import 'package:wave_learning_app/view/widgets/about_channel_widgets/channel_details_widget.dart';
+import 'package:wave_learning_app/view/widgets/about_channel_widgets/name_and_members.dart';
 
 class AboutChannelScreen extends StatefulWidget {
   const AboutChannelScreen({
@@ -23,9 +23,9 @@ class _AboutChannelScreenState extends State<AboutChannelScreen> {
   @override
   void initState() {
     final channeldetails = context.read<GetChannelDetailsBloc>();
-    if (channeldetails.state is GetChannelDetailsInitial) {
+
       channeldetails.add(FetchChanneldetailsEvent(uid: _auth.currentUser!.uid));
-    }
+ 
 
     super.initState();
   }

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/model/video_model.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_button.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_loading.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/custom_button.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
 import 'package:wave_learning_app/view/widgets/video_upload_widgets/add_thumbnail_widget.dart';
 import 'package:wave_learning_app/view/widgets/video_upload_widgets/app_bar_title.dart';
 import 'package:wave_learning_app/view/widgets/video_upload_widgets/check_box_widget.dart';
@@ -87,7 +87,9 @@ class AddThumbnailScreen extends StatelessWidget {
         likes: [],
         videoUrl: '',
         thumbnailUrl: '',
-        time: DateTime.now().toString());
+        time: DateTime.now().toString(),
+        watchLater: [],
+        );
 
     cubit.startUpload(videoFile.path, thumbnail.path, videoModel);
 

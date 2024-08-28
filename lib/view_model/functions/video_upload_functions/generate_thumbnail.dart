@@ -6,9 +6,9 @@ Future<String> generateThumbnail(String videoPath) async {
   final uint8list = await VideoThumbnail.thumbnailData(
     video: videoPath,
     imageFormat: ImageFormat.JPEG,
-    maxWidth: 128,
-    maxHeight: 128,
-    quality: 50,
+    maxWidth: 512, 
+    maxHeight: 512, 
+    quality: 90, 
   );
 
   final tempDir = await getTemporaryDirectory();

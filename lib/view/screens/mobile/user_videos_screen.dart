@@ -1,93 +1,55 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/app_bar_text.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_container.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_text.dart';
-import 'package:wave_learning_app/view/utils/icons.dart';
-import 'package:wave_learning_app/view/utils/images_fonts.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/app_bar_text.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
+import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/loading_widget.dart';
+import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/videos_widget.dart';
+import 'package:wave_learning_app/view_model/cubits/fetch_user_videos_cubit/fetch_user_videos_cubit.dart';
 
-class UserVideosScreen extends StatelessWidget {
+class UserVideosScreen extends StatefulWidget {
   const UserVideosScreen({super.key});
 
   @override
+  State<UserVideosScreen> createState() => _UserVideosScreenState();
+}
+
+class _UserVideosScreenState extends State<UserVideosScreen> {
+  @override
+  void initState() {
+    context
+        .read<FetchUserVideosCubit>()
+        .fetchUserVideos(uid: _auth.currentUser!.uid);
+    super.initState();
+  }
+
+  final _auth = FirebaseAuth.instance;
+  @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var height = size.height;
-    var width = size.width;
     return Scaffold(
-        backgroundColor: AppColors.backgroundColor,
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: AppColors.backgroundColor),
-          backgroundColor: AppColors.primaryColor,
-          title: const AppBarText(
-            text: 'YourVideos',
-          ),
-          toolbarHeight: 100,
+      backgroundColor: AppColors.backgroundColor,
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: AppColors.backgroundColor),
+        backgroundColor: AppColors.primaryColor,
+        title: const AppBarText(
+          text: 'YourVideos',
         ),
-        body: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: CustomContainer(
-                height: 120,
-                width: width,
-                color: AppColors.backgroundColor,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CustomContainer(
-                        height: 100,
-                        width: 180,
-                        color: AppColors.primaryColor,
-                        borderColor:
-                            Border.all(color: AppColors.lightTextColor),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 20,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText(
-                              text: 'Flutter Tutorial',
-                              color: AppColors.secondaryColor,
-                              fontSize: 20,
-                              fontFamily: Fonts.labelText,
-                              fontWeight: FontWeight.w500),
-                          CustomText(
-                              text: '1 day ago',
-                              color: AppColors.secondaryColor,
-                              fontSize: 17,
-                              fontFamily: Fonts.labelText,
-                              fontWeight: FontWeight.w500),
-                          Row(
-                            children: [
-                              const Icon(Icons.thumb_up_alt_outlined),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              CustomText(
-                                  text: '100',
-                                  color: AppColors.secondaryColor,
-                                  fontSize: 17,
-                                  fontFamily: Fonts.labelText,
-                                  fontWeight: FontWeight.w500),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+        toolbarHeight: 100,
+      ),
+      body: BlocBuilder<FetchUserVideosCubit, FetchUserVideosState>(
+        builder: (context, state) {
+          if (state is VideoFetchingLoadingState) {
+            return const LoadingWidget();
+          } else if (state is VideoFetchedState) {
+            return VideosWidget(
+              videos: state.videos,
             );
-          },
-        ));
+          }
+
+          return const NoDataWidget(); 
+        },
+      ),
+    );
   }
 }

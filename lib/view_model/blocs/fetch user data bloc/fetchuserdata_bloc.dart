@@ -24,7 +24,7 @@ class FetchuserdataBloc extends Bloc<FetchuserdataEvent, FetchuserdataState> {
       emit(UserDataFetchedstate(userData: userdata));
     } catch (e) {
       log('error $e');
-      emit(UserDataFetchErrorstate()); 
+      emit(UserDataFetchErrorstate());
     }
-  }  
+  }
 }

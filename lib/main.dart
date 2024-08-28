@@ -8,9 +8,11 @@ import 'package:wave_learning_app/view_model/blocs/channel%20createtion%20bloc/c
 import 'package:wave_learning_app/view_model/blocs/check%20channel%20created%20or%20not/channel_created_or_not_bloc.dart';
 import 'package:wave_learning_app/view_model/cubits/background_service_cubit/video_upload_background_cubit.dart';
 import 'package:wave_learning_app/view_model/blocs/fetch%20user%20data%20bloc/fetchuserdata_bloc.dart';
-import 'package:wave_learning_app/view_model/blocs/get%20channel%20details%20bloc/get_channel_details_bloc.dart';
+import 'package:wave_learning_app/view_model/blocs/get_channel_details_bloc/get_channel_details_bloc.dart';
 import 'package:wave_learning_app/view/screens/common%20screens/start_screen.dart';
 import 'package:wave_learning_app/view_model/blocs/video_uploading_bloc/video_uploading_bloc.dart';
+import 'package:wave_learning_app/view_model/cubits/fetch_user_videos_cubit/fetch_user_videos_cubit.dart';
+import 'package:wave_learning_app/view_model/cubits/get_all_videos%20cubit/get_all_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/functions/video_upload_functions/initialize_background_service.dart';
 import 'package:workmanager/workmanager.dart';
 import 'view_model/blocs/bottom navigation bloc/bottom_navigation_bloc_bloc.dart';
@@ -21,7 +23,7 @@ void main(List<String> args) async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Workmanager().initialize(callbackDispatcher);
- await NotificationService().initNotification();   
+  await NotificationService().initNotification();
 
   runApp(const MyApp());
 }
@@ -56,6 +58,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => VideoUploadBackgroundCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FetchUserVideosCubit(),
+        ),
+        BlocProvider(
+          create: (context) => GetAllVideosCubit(),
         ),
       ],
       child: const MaterialApp(

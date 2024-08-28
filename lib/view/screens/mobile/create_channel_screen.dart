@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view_model/blocs/channel%20createtion%20bloc/channel_creation_bloc.dart';
 import 'package:wave_learning_app/view_model/blocs/check%20channel%20created%20or%20not/channel_created_or_not_bloc.dart';
-import 'package:wave_learning_app/view_model/blocs/get%20channel%20details%20bloc/get_channel_details_bloc.dart';
-import 'package:wave_learning_app/view/utils/custom%20widgets/custom_loading.dart';
+import 'package:wave_learning_app/view_model/blocs/get_channel_details_bloc/get_channel_details_bloc.dart';
+import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/widgets/create%20channel%20widgets/channel_create_text_form_filed.dart';
-import 'package:wave_learning_app/view/widgets/create%20channel%20widgets/create_button.dart';
-import 'package:wave_learning_app/view/widgets/create%20channel%20widgets/create_channel_icon_non_selected_wedget.dart';
-import 'package:wave_learning_app/view/widgets/create%20channel%20widgets/create_icon_picked_widget.dart';
-import 'package:wave_learning_app/view/widgets/create%20channel%20widgets/edit_icon_non_selected_wedget.dart';
-import 'package:wave_learning_app/view/widgets/create%20channel%20widgets/edit_icon_selected_wedget.dart';
+import 'package:wave_learning_app/view/widgets/create_channel_widgets/channel_create_text_form_filed.dart';
+import 'package:wave_learning_app/view/widgets/create_channel_widgets/create_button.dart';
+import 'package:wave_learning_app/view/widgets/create_channel_widgets/create_channel_icon_non_selected_wedget.dart';
+import 'package:wave_learning_app/view/widgets/create_channel_widgets/create_icon_picked_widget.dart';
+import 'package:wave_learning_app/view/widgets/create_channel_widgets/edit_icon_non_selected_wedget.dart';
+import 'package:wave_learning_app/view/widgets/create_channel_widgets/edit_icon_selected_wedget.dart';
 
 class CreateChannelScreen extends StatefulWidget {
   const CreateChannelScreen(
