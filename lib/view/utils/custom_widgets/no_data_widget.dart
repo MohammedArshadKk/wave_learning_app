@@ -4,8 +4,8 @@ import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
 
 class NoDataWidget extends StatelessWidget {
-  const NoDataWidget({super.key});
-
+  const NoDataWidget({super.key,  this.text='No Data'}); 
+ final String text;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,7 +14,7 @@ class NoDataWidget extends StatelessWidget {
         children: [
           Image.asset(AppImages.noDataImage),
           CustomText(
-              text: 'No Data',
+              text: text,
               color: AppColors.secondaryColor,
               fontSize: 20,
               fontFamily: Fonts.labelText,

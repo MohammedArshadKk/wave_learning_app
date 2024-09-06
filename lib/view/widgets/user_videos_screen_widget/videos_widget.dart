@@ -8,10 +8,10 @@ import 'package:wave_learning_app/view/utils/images_fonts.dart';
 import 'package:wave_learning_app/view_model/functions/calculate_time_diff.dart';
 
 class VideosWidget extends StatelessWidget {
-  const VideosWidget({super.key, required this.videos});
+  const VideosWidget({super.key, required this.videos}); 
   final List<VideoModel> videos;
 
-  @override
+  @override    
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     // var height = size.height;

@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
 import 'package:wave_learning_app/view_model/blocs/authentication%20bloc/authentication_bloc.dart';
-import 'package:wave_learning_app/view/screens/common%20screens/custom_bottom_navigation_bar.dart';
+import 'package:wave_learning_app/view/screens/common_screens/custom_bottom_navigation_bar.dart';
 import 'package:wave_learning_app/view/screens/mobile/mobile_login_screen.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_image_asset.dart';
 
@@ -45,35 +45,37 @@ class _SplashScreenState extends State<SplashScreen> {
             });
           }
         },
-        child: Column(
-          children: [
-            CustomImageAsset(
-              image: AppImages.welcomeImage,
-              height: 400,
-              width: double.infinity,
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const SizedBox(width: 20.0, height: 100.0),
-                DefaultTextStyle(
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: AppColors.primaryColor,
-                    fontFamily: Fonts.spalshText,
+        child: SingleChildScrollView(   
+          child: Column(
+            children: [
+              CustomImageAsset(
+                image: AppImages.welcomeImage,
+                height: 400,
+                width: double.infinity,
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const SizedBox(width: 20.0, height: 100.0),
+                  DefaultTextStyle(
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: AppColors.primaryColor,
+                      fontFamily: Fonts.spalshText,
+                    ),
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        RotateAnimatedText('WELCOME TO'),
+                        RotateAnimatedText('WAVE LEARNING APP'),
+                      ],
+                      repeatForever: true,
+                      pause: const Duration(microseconds: 100),
+                    ),
                   ),
-                  child: AnimatedTextKit(
-                    animatedTexts: [
-                      RotateAnimatedText('WELCOME TO'),
-                      RotateAnimatedText('WAVE LEARNING APP'),
-                    ],
-                    repeatForever: true,
-                    pause: const Duration(microseconds: 100),
-                  ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

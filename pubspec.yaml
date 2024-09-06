@@ -60,6 +60,12 @@ dependencies:
   shimmer: ^3.0.0
   better_player: ^0.0.84
   cached_network_image: ^3.4.0
+  modal_bottom_sheet: ^3.0.0
+  flutter_chat_ui: ^1.6.15
+  flutter_document_picker: ^5.2.3
+  open_file: ^3.5.3
+  http: ^1.2.2
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -103,11 +109,11 @@ flutter:
       fonts:
         - asset: assets/fonts/PlayfairDisplay-SemiBold.ttf
           
-    - family: Podkova
+    - family: YouTubeSans
       fonts:
-        - asset: assets/fonts/Podkova-VariableFont_wght.ttf
+        - asset: assets/fonts/YouTubeSansRegular.otf
     - family: Horizon
-      fonts:
+      fonts:     
         - asset: assets/fonts/horizon.otf 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

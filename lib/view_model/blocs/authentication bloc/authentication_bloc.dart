@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wave_learning_app/services/repositories/auth/auth_repository.dart';
 import 'package:wave_learning_app/model/user_model.dart';
-import 'package:wave_learning_app/view/screens/common%20screens/custom_bottom_navigation_bar.dart';
+import 'package:wave_learning_app/view/screens/common_screens/custom_bottom_navigation_bar.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';    
 

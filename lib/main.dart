@@ -9,8 +9,10 @@ import 'package:wave_learning_app/view_model/blocs/check%20channel%20created%20o
 import 'package:wave_learning_app/view_model/cubits/background_service_cubit/video_upload_background_cubit.dart';
 import 'package:wave_learning_app/view_model/blocs/fetch%20user%20data%20bloc/fetchuserdata_bloc.dart';
 import 'package:wave_learning_app/view_model/blocs/get_channel_details_bloc/get_channel_details_bloc.dart';
-import 'package:wave_learning_app/view/screens/common%20screens/start_screen.dart';
+import 'package:wave_learning_app/view/screens/common_screens/start_screen.dart';
 import 'package:wave_learning_app/view_model/blocs/video_uploading_bloc/video_uploading_bloc.dart';
+import 'package:wave_learning_app/view_model/cubits/chat_cubit/chat_cubit.dart';
+import 'package:wave_learning_app/view_model/cubits/create_playlist_cubit/create_playlist_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/fetch_user_videos_cubit/fetch_user_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/get_all_videos%20cubit/get_all_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/functions/video_upload_functions/initialize_background_service.dart';
@@ -64,6 +66,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => GetAllVideosCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CreatePlaylistCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ChatCubit(), 
         ),
       ],
       child: const MaterialApp(

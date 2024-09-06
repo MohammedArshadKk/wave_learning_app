@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view_model/blocs/authentication%20bloc/authentication_bloc.dart';
-import 'package:wave_learning_app/view/screens/common%20screens/custom_bottom_navigation_bar.dart';
+import 'package:wave_learning_app/view/screens/common_screens/custom_bottom_navigation_bar.dart';
 import 'package:wave_learning_app/view/screens/mobile/verification_screen.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
 import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/sign_in_with_google_widget.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wave_learning_app/view/screens/common%20screens/splash_screen.dart';
+import 'package:wave_learning_app/view/screens/common_screens/splash_screen.dart';
 import 'package:wave_learning_app/view/screens/web/web_login_screen.dart';
 
 class StartScreen extends StatelessWidget {

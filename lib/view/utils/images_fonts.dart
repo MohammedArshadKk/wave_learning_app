@@ -8,10 +8,11 @@ class AppImages {
   static String addChannelIconimage='assets/images/add_channel_icon_image.png';
   static String uploadVideo='assets/images/video_upload.png';
   static String noDataImage='assets/images/undraw_Empty_re_opql.png';
+  static String playlistImage ='assets/images/playlist.png';
 }
 
 class Fonts {
   static String loginScreenFont = 'PlusJakartaSans';
-  static String labelText = 'Podkova';
+  static String labelText = 'YouTubeSans'; 
   static String spalshText = 'Horizon';
 }

@@ -4,9 +4,10 @@ import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view_model/blocs/bottom%20navigation%20bloc/bottom_navigation_bloc_bloc.dart';
 import 'package:wave_learning_app/view/screens/mobile/home_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/chat_bot_screen.dart';
-import 'package:wave_learning_app/view/screens/mobile/chat_screen.dart';
+import 'package:wave_learning_app/view/screens/mobile/chat_groups_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/profile_screen.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dart';
+import 'package:wave_learning_app/view_model/cubits/get_joined_channels/get_joined_channels_cubit.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
@@ -14,7 +15,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> screens = [
       const HomeScreen(),
-      const ChatScreen(),
+      BlocProvider(
+        create: (context) => GetJoinedChannelsCubit(),
+        child: const ChatGroupScreen(),
+      ),
       const ChatBotScreen(),
       const ProfileScreen()
     ];
