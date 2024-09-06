@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
+import 'package:wave_learning_app/model/video_model.dart';
 
 part 'search_videos_state.dart';
 
@@ -14,7 +15,7 @@ class SearchVideosCubit extends Cubit<SearchVideosState> {
     if (debounce?.isActive ?? false) {
       debounce!.cancel();
     }
-    debounce= Timer(const Duration(milliseconds: 300), (){
+    debounce = Timer(const Duration(milliseconds: 300), () {
       searchVideo(searchText);
     });
   }
@@ -57,11 +58,23 @@ class SearchVideosCubit extends Cubit<SearchVideosState> {
       emit(SearchState(suggestions: const [], isLoading: false));
     }
   }
-  pickSearchResultsVideos(String searchedText){
-   try {
-     
-   } catch (e) {
-     
-   }
+
+  pickSearchResultsVideos(String searchedText) async {
+    emit(LoadingState());
+    try {
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('channelVideos')
+          .where('title', isGreaterThanOrEqualTo: searchedText)
+          .where('title', isLessThanOrEqualTo: '$searchedText\uf8ff')
+          .get();
+      List<VideoModel> videosList = querySnapshot.docs.map((docs) {
+        return VideoModel.fromMap(docs.data() as Map<String, dynamic>,
+            documentid: docs.id);
+      }).toList();
+      log(videosList.length.toString());
+      emit(VideoPickedState(listVideoModel: videosList));
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }

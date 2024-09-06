@@ -7,8 +7,8 @@ import 'package:wave_learning_app/view/utils/images_fonts.dart';
 import 'package:wave_learning_app/view_model/cubits/search_videos_cubit/search_videos_cubit.dart';
 
 class SearchVideoScreen extends StatelessWidget {
-  const SearchVideoScreen({super.key});
-
+   SearchVideoScreen({super.key});
+final TextEditingController searchController= TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,10 +56,17 @@ class SearchVideoScreen extends StatelessWidget {
         onChanged: (query) {
           context.read<SearchVideosCubit>().searchVideo(query);
         },
+        controller:searchController , 
         decoration: InputDecoration(
           hintText: 'Search...',
-          hintStyle: TextStyle(color: Colors.grey[400]),
-          prefixIcon: Icon(Icons.search, color: Colors.grey[400]),
+          hintStyle: TextStyle(color: Colors.grey[400]),  
+          suffixIcon: IconButton(onPressed: (){
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (ctx) => BlocProvider(
+                      create: (context) => SearchVideosCubit(),
+                      child:  SearchResultsVideosScreen(text: searchController.text,), 
+                    )));
+          }, icon: Icon(Icons.search)),
           filled: true,
           fillColor: Colors.grey[100],
           border: OutlineInputBorder(
@@ -81,7 +88,6 @@ class SearchVideoScreen extends StatelessWidget {
 
   Widget _buildSuggestionsList(List<String> suggestions) {
     return ListView.separated(
-      
       itemCount: suggestions.length,
       separatorBuilder: (context, index) =>
           Divider(height: 1, color: Colors.grey[200]),
@@ -96,7 +102,11 @@ class SearchVideoScreen extends StatelessWidget {
           ),
           trailing: Icon(Icons.north_west, color: Colors.grey[400], size: 18),
           onTap: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx)=>const SearchResultsVideosScreen()));
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (ctx) => BlocProvider(
+                      create: (context) => SearchVideosCubit(),
+                      child:  SearchResultsVideosScreen(text:suggestions[index] ,), 
+                    )));
           },
         );
       },
