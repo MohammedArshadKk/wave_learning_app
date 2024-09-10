@@ -25,7 +25,7 @@ class VideoUploadingFileds extends StatelessWidget {
         children: [
           CustomTextFormField(
             labelText: 'Enter video title',
-            fontFamily: Fonts.labelText,
+            fontFamily: Fonts.primaryText,
             fontWeight: FontWeight.normal,
             padding: 20,
             fontSize: 12,
@@ -45,7 +45,7 @@ class VideoUploadingFileds extends StatelessWidget {
           ),
           CustomTextFormField(
             labelText: 'Enter description',
-            fontFamily: Fonts.labelText,
+            fontFamily: Fonts.primaryText,
             fontWeight: FontWeight.normal,
             padding: 20,
             fontSize: 12,
@@ -69,12 +69,12 @@ class VideoUploadingFileds extends StatelessWidget {
                           text: 'Enter a comma after each tag',
                           color: AppColors.secondaryColor,
                           fontSize: 12,
-                          fontFamily: Fonts.labelText,
+                          fontFamily: Fonts.primaryText,
                           fontWeight: FontWeight.w600),
                     ),
                     CustomTextFormField(
                       labelText: 'Enter tags',
-                      fontFamily: Fonts.labelText,
+                      fontFamily: Fonts.primaryText,
                       fontWeight: FontWeight.normal,
                       padding: 20,
                       fontSize: 12,

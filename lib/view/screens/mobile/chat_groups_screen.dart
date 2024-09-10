@@ -42,7 +42,7 @@ class _ChatGroupScreenState extends State<ChatGroupScreen> {
           text: 'Message',
           color: AppColors.backgroundColor,
           fontSize: 26,
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.w500,
         ),
       ),
@@ -60,7 +60,7 @@ class _ChatGroupScreenState extends State<ChatGroupScreen> {
               padding: const EdgeInsets.all(8.0),
               child: CustomTextFormField(
                 labelText: 'Search',
-                fontFamily: Fonts.labelText,
+                fontFamily: Fonts.primaryText,
                 fontWeight: FontWeight.normal,
                 padding: 20,
                 fontSize: 14,

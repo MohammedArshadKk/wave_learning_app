@@ -94,7 +94,7 @@ class ChatMessageWidget extends StatelessWidget {
                                   text: date,
                                   color: AppColors.lightTextColor,
                                   fontSize: 12,
-                                  fontFamily: Fonts.labelText,
+                                  fontFamily: Fonts.primaryText,
                                   fontWeight: FontWeight.normal,
                                 ),
                                 Container(

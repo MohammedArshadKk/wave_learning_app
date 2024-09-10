@@ -69,13 +69,13 @@ class LikedVideosWidget extends StatelessWidget {
                             text: title,
                             color: AppColors.secondaryColor,
                             fontSize: 18,
-                            fontFamily: Fonts.labelText,
+                            fontFamily: Fonts.primaryText,
                             fontWeight: FontWeight.w500),
                         CustomText(
                             text: difference,
                             color: AppColors.secondaryColor,
                             fontSize: 17,
-                            fontFamily: Fonts.labelText,
+                            fontFamily: Fonts.primaryText,
                             fontWeight: FontWeight.w500),
                         Row(
                           children: [
@@ -87,7 +87,7 @@ class LikedVideosWidget extends StatelessWidget {
                                 text: video.likes.length.toString(),
                                 color: AppColors.secondaryColor,
                                 fontSize: 17,
-                                fontFamily: Fonts.labelText,
+                                fontFamily: Fonts.primaryText,
                                 fontWeight: FontWeight.w500),
                           ],
                         )

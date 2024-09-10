@@ -13,7 +13,7 @@ class NoMessageWidget extends StatelessWidget {
           text: 'No messages yet', 
           color: AppColors.secondaryColor,
           fontSize: 20,
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.w600),
     );
   }

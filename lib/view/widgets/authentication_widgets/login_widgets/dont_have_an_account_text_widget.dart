@@ -16,7 +16,7 @@ class DontHaveAnAccountTextWidget extends StatelessWidget {
             text: 'Don’t have an account?',
             color: AppColors.primaryColor,
             fontSize: 16,
-            fontFamily: Fonts.labelText,
+            fontFamily: Fonts.primaryText,
             fontWeight: FontWeight.normal),
         GestureDetector(
           onTap: () {
@@ -27,7 +27,7 @@ class DontHaveAnAccountTextWidget extends StatelessWidget {
               text: 'Sign up',
               color: AppColors.primaryColor,
               fontSize: 16,
-              fontFamily: Fonts.labelText,
+              fontFamily: Fonts.primaryText,
               fontWeight: FontWeight.bold),
         ),
       ],

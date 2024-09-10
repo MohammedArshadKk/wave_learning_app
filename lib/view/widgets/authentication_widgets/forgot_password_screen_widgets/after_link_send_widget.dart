@@ -16,13 +16,13 @@ class AfterLinkSendWidget extends StatelessWidget {
               text: 'We sent a reset password link to',
               color: AppColors.secondaryColor,
               fontSize: 20,
-              fontFamily: Fonts.labelText,
+              fontFamily: Fonts.primaryText,
               fontWeight: FontWeight.normal),
           CustomText(
               text: 'email',
               color: AppColors.secondaryColor,
               fontSize: 20,
-              fontFamily: Fonts.labelText,
+              fontFamily: Fonts.primaryText,
               fontWeight: FontWeight.normal)
         ],
       ),

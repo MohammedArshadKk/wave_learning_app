@@ -12,7 +12,7 @@ class TabBarText extends StatelessWidget {
         text: text,
         color: AppColors.backgroundColor,
         fontSize: 18,
-        fontFamily: Fonts.labelText,
+        fontFamily: Fonts.primaryText,
         fontWeight: FontWeight.normal);
   }
 }

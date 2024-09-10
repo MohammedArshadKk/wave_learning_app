@@ -31,7 +31,7 @@ class ProfileGridViewItomWidget extends StatelessWidget {
                 text: text,
                 color: AppColors.secondaryColor,
                 fontSize: 16,
-                fontFamily: Fonts.labelText,
+                fontFamily: Fonts.primaryText,
                 fontWeight: FontWeight.normal)
           ],
         ),

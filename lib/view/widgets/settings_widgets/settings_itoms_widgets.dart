@@ -28,7 +28,7 @@ class SettingsItomsWidgets extends StatelessWidget {
                   text: text,
                   color: AppColors.secondaryColor,
                   fontSize: 18,
-                  fontFamily: Fonts.labelText,
+                  fontFamily: Fonts.primaryText,
                   fontWeight: FontWeight.w500),
             ),
           ),

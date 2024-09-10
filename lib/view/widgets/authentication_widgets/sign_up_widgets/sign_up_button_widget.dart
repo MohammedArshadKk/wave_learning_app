@@ -43,7 +43,7 @@ class SignUpButtonWidget extends StatelessWidget {
                   text: 'Get Started',
                   color: AppColors.backgroundColor,
                   fontSize: 25,
-                  fontFamily: Fonts.labelText,
+                  fontFamily: Fonts.primaryText,
                   fontWeight: FontWeight.normal)),
         ),
       ),

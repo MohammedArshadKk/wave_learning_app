@@ -18,7 +18,7 @@ class SignUpTextFormField extends StatelessWidget {
       children: [
         CustomTextFormField(
           labelText: 'Name',
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.normal,
           padding: 10,
           fontSize: 18,
@@ -38,7 +38,7 @@ class SignUpTextFormField extends StatelessWidget {
         ),
         CustomTextFormField(
           labelText: 'Email',
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.normal,
           padding: 10,
           fontSize: 18,
@@ -60,7 +60,7 @@ class SignUpTextFormField extends StatelessWidget {
         ),
         CustomTextFormField(
           labelText: 'Password',
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.normal,
           padding: 10,
           fontSize: 18,

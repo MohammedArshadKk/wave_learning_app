@@ -89,6 +89,7 @@ class AddThumbnailScreen extends StatelessWidget {
         thumbnailUrl: '',
         time: DateTime.now().toString(),
         watchLater: [],
+        views: [], 
         );
 
     cubit.startUpload(videoFile.path, thumbnail.path, videoModel);

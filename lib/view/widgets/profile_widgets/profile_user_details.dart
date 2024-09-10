@@ -45,13 +45,13 @@ class ProfileUserDetails extends StatelessWidget {
                         text: state.userData.userName.toString(),
                         color: AppColors.backgroundColor,
                         fontSize: 25,
-                        fontFamily: Fonts.labelText,
+                        fontFamily: Fonts.primaryText,
                         fontWeight: FontWeight.w300),
                     subtitle: CustomText(
                         text: state.userData.email.toString(),
                         color: AppColors.backgroundColor,
                         fontSize: 15,
-                        fontFamily: Fonts.labelText,
+                        fontFamily: Fonts.primaryText,
                         fontWeight: FontWeight.w300),
                   ),
                 );

@@ -20,7 +20,7 @@ class CustomDrawerItomWidget extends StatelessWidget {
           text: text,
           color: AppColors.secondaryColor,
           fontSize: 13,
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.normal),
       onTap: onTap,
     );

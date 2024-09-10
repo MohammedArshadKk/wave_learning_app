@@ -37,7 +37,7 @@ class UploadVideoWidget extends StatelessWidget {
               text: 'Upload video',
               color: AppColors.secondaryColor,
               fontSize: 20,
-              fontFamily: Fonts.labelText,
+              fontFamily: Fonts.primaryText,
               fontWeight: FontWeight.normal)
         ],
       ),

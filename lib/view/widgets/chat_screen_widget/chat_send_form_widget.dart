@@ -63,7 +63,7 @@ class SendFormWidget extends StatelessWidget {
                                     text: documentPath,
                                     color: AppColors.secondaryColor,
                                     fontSize: 15,
-                                    fontFamily: Fonts.labelText,
+                                    fontFamily: Fonts.primaryText,
                                     fontWeight: FontWeight.normal),
                               ),
                               BlocListener<ChatCubit, ChatState>(

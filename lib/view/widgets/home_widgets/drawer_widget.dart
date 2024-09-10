@@ -60,7 +60,7 @@ class DrawerWidget extends StatelessWidget {
                   text: 'Explore ',
                   color: AppColors.secondaryColor,
                   fontSize: 20,
-                  fontFamily: Fonts.labelText,
+                  fontFamily: Fonts.primaryText,
                   fontWeight: FontWeight.normal),
             ),
             CustomDrawerItomWidget(

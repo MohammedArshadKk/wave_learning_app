@@ -13,7 +13,7 @@ import 'package:wave_learning_app/view/widgets/authentication_widgets/sign_up_wi
 import 'package:wave_learning_app/view/widgets/authentication_widgets/sign_up_widgets/sign_up_text_form_field.dart';
 
 class MobileSignUpScreen extends StatefulWidget {
-  const MobileSignUpScreen({super.key});
+  const MobileSignUpScreen({super.key,});
 
   @override
   State<MobileSignUpScreen> createState() => _MobileSignUpScreenState();
@@ -45,7 +45,7 @@ class _MobileSignUpScreenState extends State<MobileSignUpScreen> {
               } else if (state is SignInWithGooglestate) {
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (ctx) => const CustomBottomNavigationBar()));
+                    builder: (ctx) =>  CustomBottomNavigationBar()));
               } else if (state is UnAuthenticatedState) {
                 Navigator.pop(context);
                 log('error');

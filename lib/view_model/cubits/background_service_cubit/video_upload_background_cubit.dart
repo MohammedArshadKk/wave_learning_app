@@ -28,7 +28,8 @@ class VideoUploadBackgroundCubit extends Cubit<VideoUploadBackgroundState> {
           'videoUrl': videoModel.videoUrl,
           'thumbnailUrl': videoModel.thumbnailUrl,
           'time': videoModel.time,
-          'watchLater':videoModel.watchLater
+          'watchLater':videoModel.watchLater, 
+          'views':videoModel.views,
         });
   }
 }

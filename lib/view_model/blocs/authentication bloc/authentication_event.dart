@@ -25,8 +25,8 @@ class SignInWithGoogleEvent extends AuthenticationEvent {}
 
 class VerifyEmailEvent extends AuthenticationEvent {
   final BuildContext context;
-
-  VerifyEmailEvent({required this.context});
+  
+  VerifyEmailEvent( {required this.context});
 }
 
 class ForgotPasswordEvent extends AuthenticationEvent {

@@ -15,7 +15,7 @@ class AppBarTitle extends StatelessWidget {
             text: "upload video",
             color: AppColors.secondaryColor,
             fontSize: 24,
-            fontFamily: Fonts.labelText,
+            fontFamily: Fonts.primaryText,
             fontWeight: FontWeight.bold),
       ),
     );

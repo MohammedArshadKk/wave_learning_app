@@ -37,7 +37,7 @@ class CustomChatTile extends StatelessWidget {
                     text: channel.channelName,
                     color: AppColors.secondaryColor,
                     fontSize: 20,
-                    fontFamily: Fonts.labelText,
+                    fontFamily: Fonts.primaryText,
                     fontWeight: FontWeight.normal,
                   ),
                   const SizedBox(height: 4),
@@ -56,7 +56,7 @@ class CustomChatTile extends StatelessWidget {
                                 text: 'No messages yet',
                                 color: AppColors.lightTextColor,
                                 fontSize: 14,
-                                fontFamily: Fonts.labelText,
+                                fontFamily: Fonts.primaryText,
                                 fontWeight: FontWeight.normal,
                               );
                             }
@@ -79,7 +79,7 @@ class CustomChatTile extends StatelessWidget {
                               text: text,
                               color: AppColors.lightTextColor,
                               fontSize: 14,
-                              fontFamily: Fonts.labelText,
+                              fontFamily: Fonts.primaryText,
                               fontWeight: FontWeight.normal,
                             );
                           },
@@ -120,7 +120,7 @@ class CustomChatTile extends StatelessWidget {
                         text: timeText,
                         color: AppColors.primaryColor,
                         fontSize: 14,
-                        fontFamily: Fonts.labelText,
+                        fontFamily: Fonts.primaryText,
                         fontWeight: FontWeight.normal,
                       );
                     },

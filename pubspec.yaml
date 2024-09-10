@@ -66,6 +66,10 @@ dependencies:
   open_file: ^3.5.3
   http: ^1.2.2
   intl: ^0.19.0
+  google_generative_ai: ^0.4.6
+  flutter_dotenv: ^5.1.0
+  zego_uikit_prebuilt_video_conference: ^2.9.2
+  
 
 dev_dependencies:
   flutter_test:
@@ -92,6 +96,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
   - assets/images/
+  - .env
    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -115,5 +120,11 @@ flutter:
     - family: Horizon
       fonts:     
         - asset: assets/fonts/horizon.otf 
+    - family: Rubik
+      fonts:     
+        - asset: assets/fonts/Rubik-Medium.ttf
+    - family: YouTubeSansDarkBlack
+      fonts:     
+        - asset: assets/fonts/YouTubeSansDarkBlack.otf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

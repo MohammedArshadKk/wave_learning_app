@@ -95,7 +95,7 @@ class AuthenticationBloc
     await _auth.currentUser!.reload();
     if (_auth.currentUser!.emailVerified) {
       Navigator.of(event.context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const CustomBottomNavigationBar()));
+          builder: (context) =>  CustomBottomNavigationBar()));
     } else {
       ScaffoldMessenger.of(event.context).showSnackBar(
           const SnackBar(content: Text('error: Please conform your email')));

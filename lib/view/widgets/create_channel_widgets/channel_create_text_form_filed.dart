@@ -18,7 +18,7 @@ class ChannelCreateTextFormFiled extends StatelessWidget {
       children: [
         CustomTextFormField(
           labelText: 'Enter your channel name',
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.normal,
           padding: 20,
           fontSize: 12,
@@ -38,7 +38,7 @@ class ChannelCreateTextFormFiled extends StatelessWidget {
         ),
         CustomTextFormField(
           labelText: 'Enter your channel description',
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.normal,
           padding: 20,
           fontSize: 12,
@@ -58,7 +58,7 @@ class ChannelCreateTextFormFiled extends StatelessWidget {
         ),
         CustomTextFormField(
           labelText: 'Enter channel focused subject',
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.normal,
           padding: 20,
           fontSize: 12,

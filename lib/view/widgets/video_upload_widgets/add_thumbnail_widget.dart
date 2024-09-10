@@ -48,7 +48,7 @@ class AddThumbnailWidget extends StatelessWidget {
                           text: 'Add Thumbnail',
                           color: AppColors.secondaryColor,
                           fontSize: 20,
-                          fontFamily: Fonts.labelText,
+                          fontFamily: Fonts.primaryText,
                           fontWeight: FontWeight.normal,
                         ),
                       ],

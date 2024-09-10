@@ -11,6 +11,8 @@ import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 class VerificationScreen extends StatelessWidget {
   VerificationScreen({super.key});
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,25 +35,25 @@ class VerificationScreen extends StatelessWidget {
                 text: 'Email verification',
                 color: AppColors.secondaryColor,
                 fontSize: 30,
-                fontFamily: Fonts.labelText,
+                fontFamily: Fonts.primaryText,
                 fontWeight: FontWeight.bold),
             CustomText(
                 text: 'We sent a verification link to',
                 color: AppColors.secondaryColor,
                 fontSize: 20,
-                fontFamily: Fonts.labelText,
+                fontFamily: Fonts.primaryText,
                 fontWeight: FontWeight.normal),
             CustomText(
                 text: '${_auth.currentUser?.email}',
                 color: AppColors.secondaryColor,
                 fontSize: 20,
-                fontFamily: Fonts.labelText,
+                fontFamily: Fonts.primaryText,
                 fontWeight: FontWeight.normal),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  context.read<AuthenticationBloc>().add(VerifyEmailEvent(context: context));
+                  context.read<AuthenticationBloc>().add(VerifyEmailEvent(context: context,));
                 },
                 child: CustomContainer(
                   height: 55,
@@ -63,7 +65,7 @@ class VerificationScreen extends StatelessWidget {
                           text: 'Get Started',
                           color: AppColors.backgroundColor,
                           fontSize: 25,
-                          fontFamily: Fonts.labelText,
+                          fontFamily: Fonts.primaryText,
                           fontWeight: FontWeight.normal)),
                 ),
               ),

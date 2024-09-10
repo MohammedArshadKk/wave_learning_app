@@ -12,7 +12,7 @@ class TitleWidget extends StatelessWidget {
         text: title,
         color: AppColors.secondaryColor,
         fontSize: 22,
-        fontFamily: Fonts.labelText,
+        fontFamily: Fonts.primaryText,
         fontWeight: FontWeight.w500);
   }
 }

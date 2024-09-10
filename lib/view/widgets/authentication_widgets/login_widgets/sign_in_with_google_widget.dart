@@ -34,7 +34,7 @@ class SignInWithGoogleWidget extends StatelessWidget {
                   text: text,
                   color: AppColors.primaryColor,
                   fontSize: 20,
-                  fontFamily: Fonts.labelText,
+                  fontFamily: Fonts.primaryText,
                   fontWeight: FontWeight.normal),
             ],
           )),

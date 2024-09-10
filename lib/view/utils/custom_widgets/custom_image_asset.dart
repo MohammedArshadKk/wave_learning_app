@@ -30,7 +30,7 @@ class CustomImageAsset extends StatelessWidget {
                   text: text,
                   color: AppColors.primaryColor,
                   fontSize: 30,
-                  fontFamily: Fonts.labelText,
+                  fontFamily: Fonts.primaryText,
                   fontWeight: FontWeight.w900)
             ],
           )),

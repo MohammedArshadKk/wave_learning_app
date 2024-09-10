@@ -29,7 +29,7 @@ class AboutContentsWidget extends StatelessWidget {
           text: content,
           color: AppColors.secondaryColor,
           fontSize: 16,
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.w500),
     );
   }

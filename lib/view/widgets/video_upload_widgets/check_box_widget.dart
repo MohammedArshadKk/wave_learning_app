@@ -36,7 +36,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                   text: "Free",
                   color: AppColors.secondaryColor,
                   fontSize: 18,
-                  fontFamily: Fonts.labelText,
+                  fontFamily: Fonts.primaryText,
                   fontWeight: FontWeight.normal),
             ],
           ),
@@ -60,7 +60,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                   text: "Paid", 
                   color: AppColors.secondaryColor,
                   fontSize: 18,
-                  fontFamily: Fonts.labelText,
+                  fontFamily: Fonts.primaryText,
                   fontWeight: FontWeight.normal),
             ],
           )

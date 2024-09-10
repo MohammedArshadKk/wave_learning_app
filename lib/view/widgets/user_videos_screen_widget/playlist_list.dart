@@ -98,7 +98,7 @@ class PlaylistList extends StatelessWidget {
                         style: TextStyle(
                           color: AppColors.secondaryColor,
                           fontSize: 20,
-                          fontFamily: Fonts.labelText,
+                          fontFamily: Fonts.primaryText,
                           fontWeight: FontWeight.w600,
                         ),
                         maxLines: 2,
@@ -110,7 +110,7 @@ class PlaylistList extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 16,
-                          fontFamily: Fonts.labelText,
+                          fontFamily: Fonts.primaryText,
                         ),
                       ),
                     ],

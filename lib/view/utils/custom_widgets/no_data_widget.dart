@@ -17,7 +17,7 @@ class NoDataWidget extends StatelessWidget {
               text: text,
               color: AppColors.secondaryColor,
               fontSize: 20,
-              fontFamily: Fonts.labelText,
+              fontFamily: Fonts.primaryText,
               fontWeight: FontWeight.w600)
         ],
       ),

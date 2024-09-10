@@ -1,4 +1,5 @@
 import 'package:better_player/better_player.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/model/channel_model.dart';
@@ -16,6 +17,8 @@ import 'package:wave_learning_app/view_model/cubits/join_channel_cubit/join_chan
 import 'package:wave_learning_app/view_model/cubits/watch_later_cubit/watch_later_cubit.dart';
 import 'package:wave_learning_app/view_model/functions/video_upload_functions/init_functions/video_player_init_function.dart';
 
+import '../../../view_model/cubits/history_cubit/history_cubit.dart';
+
 class VideoPlayerScreen extends StatefulWidget {
   const VideoPlayerScreen({
     super.key,
@@ -31,9 +34,16 @@ class VideoPlayerScreen extends StatefulWidget {
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   late BetterPlayerController betterPlayerController;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   void initState() {
+    context.read<HistoryCubit>().addViews(
+        _auth.currentUser!.uid, widget.videoModel.documentid.toString());
+    context.read<HistoryCubit>().addToHistory(
+        _auth.currentUser!.uid, widget.videoModel.documentid.toString()); 
     betterPlayerController = videoConfigtration(widget.videoModel.videoUrl);
+
     super.initState();
   }
 
@@ -57,7 +67,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    TimeDiffWidget(difference: widget.timeDiff),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TimeDiffAndViewsWidget(
+                          difference: "${widget.videoModel.views.length} views",
+                        ),
+                        TimeDiffAndViewsWidget(difference: widget.timeDiff),
+                      ],
+                    ),
                     FutureBuilder(
                         future: getChannel(widget.videoModel.uid),
                         builder: (context, snapshot) {

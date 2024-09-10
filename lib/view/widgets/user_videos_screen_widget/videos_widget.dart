@@ -1,19 +1,26 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/model/video_model.dart';
+import 'package:wave_learning_app/view/screens/mobile/search_video_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/video_player_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
+import 'package:wave_learning_app/view_model/cubits/history_cubit/history_cubit.dart';
 import 'package:wave_learning_app/view_model/functions/calculate_time_diff.dart';
 
 class VideosWidget extends StatelessWidget {
-  const VideosWidget({super.key, required this.videos}); 
+  VideosWidget({super.key, required this.videos});
   final List<VideoModel> videos;
-
-  @override    
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
     // var height = size.height;
     var width = size.width;
     return ListView.builder(
@@ -28,11 +35,13 @@ class VideosWidget extends StatelessWidget {
 
         return GestureDetector(
           onTap: () {
+            
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (ctx) => VideoPlayerScreen(
                       videoModel: video,
                       timeDiff: difference,
                     )));
+
           },
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -69,13 +78,13 @@ class VideosWidget extends StatelessWidget {
                             text: title,
                             color: AppColors.secondaryColor,
                             fontSize: 18,
-                            fontFamily: Fonts.labelText,
+                            fontFamily: Fonts.primaryText,
                             fontWeight: FontWeight.w500),
                         CustomText(
                             text: difference.toString(),
                             color: AppColors.secondaryColor,
                             fontSize: 17,
-                            fontFamily: Fonts.labelText,
+                            fontFamily: Fonts.primaryText,
                             fontWeight: FontWeight.w500),
                         Row(
                           children: [
@@ -87,7 +96,7 @@ class VideosWidget extends StatelessWidget {
                                 text: video.likes.length.toString(),
                                 color: AppColors.secondaryColor,
                                 fontSize: 17,
-                                fontFamily: Fonts.labelText,
+                                fontFamily: Fonts.primaryText,
                                 fontWeight: FontWeight.w500),
                           ],
                         )

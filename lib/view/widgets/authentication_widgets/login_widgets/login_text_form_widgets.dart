@@ -16,7 +16,7 @@ class LoginTextFormWidgets extends StatelessWidget {
       children: [
         CustomTextFormField(
           labelText: 'Email',
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.normal,
           padding: 10,
           fontSize: 18,
@@ -36,7 +36,7 @@ class LoginTextFormWidgets extends StatelessWidget {
         ),
         CustomTextFormField(
           labelText: 'Password',
-          fontFamily: Fonts.labelText,
+          fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.normal,
           padding: 10,
           fontSize: 18,

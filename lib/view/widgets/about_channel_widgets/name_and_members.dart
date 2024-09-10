@@ -14,13 +14,13 @@ class NameAndMembers extends StatelessWidget {
             text: name,
             color: AppColors.secondaryColor,
             fontSize: 30,
-            fontFamily: Fonts.labelText,
+            fontFamily: Fonts.primaryText,
             fontWeight: FontWeight.bold),
         CustomText(
             text: '10 members',
             color: AppColors.lightTextColor,
             fontSize: 16,
-            fontFamily: Fonts.labelText,
+            fontFamily: Fonts.primaryText,
             fontWeight: FontWeight.normal),
       ],
     );

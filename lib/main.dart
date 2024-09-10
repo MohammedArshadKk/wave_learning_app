@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:wave_learning_app/firebase_options.dart';
 import 'package:wave_learning_app/services/repositories/notification/notification_service.dart';
 import 'package:wave_learning_app/view_model/blocs/authentication%20bloc/authentication_bloc.dart';
@@ -11,10 +12,13 @@ import 'package:wave_learning_app/view_model/blocs/fetch%20user%20data%20bloc/fe
 import 'package:wave_learning_app/view_model/blocs/get_channel_details_bloc/get_channel_details_bloc.dart';
 import 'package:wave_learning_app/view/screens/common_screens/start_screen.dart';
 import 'package:wave_learning_app/view_model/blocs/video_uploading_bloc/video_uploading_bloc.dart';
+import 'package:wave_learning_app/view_model/cubits/chat_bot/chat_bot_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/chat_cubit/chat_cubit.dart';
+import 'package:wave_learning_app/view_model/cubits/create_meeting_cubit/create_meeting_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/create_playlist_cubit/create_playlist_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/fetch_user_videos_cubit/fetch_user_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/get_all_videos%20cubit/get_all_videos_cubit.dart';
+import 'package:wave_learning_app/view_model/cubits/history_cubit/history_cubit.dart';
 import 'package:wave_learning_app/view_model/functions/video_upload_functions/initialize_background_service.dart';
 import 'package:workmanager/workmanager.dart';
 import 'view_model/blocs/bottom navigation bloc/bottom_navigation_bloc_bloc.dart';
@@ -26,13 +30,13 @@ void main(List<String> args) async {
   );
   Workmanager().initialize(callbackDispatcher);
   await NotificationService().initNotification();
-
-  runApp(const MyApp());
+ await dotenv.load(fileName: ".env");
+  runApp( MyApp(geminiApiKey: dotenv.env['gemini_api_key'],));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  const MyApp({super.key, required this.geminiApiKey});
+final String? geminiApiKey;
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -73,10 +77,21 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ChatCubit(), 
         ),
+        BlocProvider(
+          create: (context) => HistoryCubit(),  
+        ),
+        BlocProvider(
+          create: (context) => ChatBotCubit(apiKey: geminiApiKey),  
+        ),
+        BlocProvider(
+          create: (context) => CreateMeetingCubit(),
+        ),
       ],
-      child: const MaterialApp(
+      child:  MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: StartScreen(),
+        home: StartScreen(
+          apiKey: geminiApiKey,
+        ),
       ),
     );
   }

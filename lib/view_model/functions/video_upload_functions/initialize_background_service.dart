@@ -35,6 +35,7 @@ void callbackDispatcher() async {
           time: inputData['time'] as String,
           tags: (inputData['tags'] as List?)?.cast<String>(),
           watchLater: (inputData['watchLater']as List).cast<String>(),
+          views: (inputData['views']as List).cast<String>(), 
         );
 
         try {

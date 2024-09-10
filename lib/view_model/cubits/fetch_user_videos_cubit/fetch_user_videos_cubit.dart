@@ -19,7 +19,7 @@ class FetchUserVideosCubit extends Cubit<FetchUserVideosState> {
           return VideoModel.fromMap(docs.data() as Map<String, dynamic>,
               documentid: docs.id);
         }).toList();
-        log(videos.length.toString());
+       
         emit(VideoFetchedState(videos: videos));
       }
     } catch (e) {

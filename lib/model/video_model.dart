@@ -10,7 +10,8 @@ class VideoModel {
   final List<String>? tags;
   final List<String> likes;
   final String? documentid;
-  final List<String> watchLater;  
+  final List<String> watchLater;
+  final List<String> views;
 
   VideoModel({
     required this.title,
@@ -23,6 +24,7 @@ class VideoModel {
     required this.thumbnailUrl,
     required this.time,
     required this.watchLater,
+    required this.views,
     this.tags,
     this.documentid,
   });
@@ -40,24 +42,25 @@ class VideoModel {
       'thumbnailUrl': thumbnailUrl,
       'time': time,
       'documentid': documentid,
-      'watchLater':watchLater,
+      'watchLater': watchLater,
+      'views': views,
     };
   }
 
   factory VideoModel.fromMap(Map<String, dynamic> map, {String? documentid}) {
     return VideoModel(
-      title: map['title'] ?? '',
-      uid: map['uid'] ?? '',
-      channelName: map['channelName'] ?? '',
-      description: map['description'] ?? '',
-      email: map['email'] ?? '',
-      tags: map['tags'] != null ? List<String>.from(map['tags']) : null,
-      likes: List<String>.from(map['likes'] ?? []),
-      videoUrl: map['videoUrl'] ?? '',
-      thumbnailUrl: map['thumbnailUrl'] ?? '',
-      time: map['time'] ?? '',
-      documentid: documentid,
-      watchLater: List<String>.from(map['watchLater'] ?? [])
-    );
+        title: map['title'] ?? '',
+        uid: map['uid'] ?? '',
+        channelName: map['channelName'] ?? '',
+        description: map['description'] ?? '',
+        email: map['email'] ?? '',
+        tags: map['tags'] != null ? List<String>.from(map['tags']) : null,
+        likes: List<String>.from(map['likes'] ?? []),
+        videoUrl: map['videoUrl'] ?? '',
+        thumbnailUrl: map['thumbnailUrl'] ?? '',
+        time: map['time'] ?? '',
+        documentid: documentid,
+        watchLater: List<String>.from(map['watchLater'] ?? []),
+        views: List<String>.from(map['views'] ?? []));  
   }
 }

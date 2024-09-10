@@ -14,12 +14,8 @@ class CreateMeetingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-     final channelState=  context
-            .read<ChannelCreatedOrNotBloc>();
-           if (channelState.state is ChannelCreatedOrNotInitial) {
-             channelState.add(ChekingChannelcreatedEvent(uid: uid));
-           }
-            
+        final channelState = context.read<ChannelCreatedOrNotBloc>();
+        channelState.add(ChekingChannelcreatedEvent(uid: uid));
       },
       child: Column(
         children: [
@@ -44,7 +40,7 @@ class CreateMeetingWidget extends StatelessWidget {
               text: 'Create Meeting',
               color: AppColors.secondaryColor,
               fontSize: 20,
-              fontFamily: Fonts.labelText,
+              fontFamily: Fonts.primaryText,
               fontWeight: FontWeight.normal)
         ],
       ),

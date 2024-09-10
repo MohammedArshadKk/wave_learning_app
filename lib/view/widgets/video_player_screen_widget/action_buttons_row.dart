@@ -69,7 +69,7 @@ class _ActionButtonsRowState extends State<ActionButtonsRow> {
                               : 'This video has been added to your watch later list.',
                           color: AppColors.backgroundColor,
                           fontSize: 16, 
-                          fontFamily: Fonts.labelText,
+                          fontFamily: Fonts.primaryText,
                           fontWeight: FontWeight.w500))); 
                 },
                 child: state is AddedwatchLaterState

@@ -14,7 +14,7 @@ final String text;
             text: text,
             color: AppColors.secondaryColor,
             fontSize: 20,
-            fontFamily: Fonts.labelText,
+            fontFamily: Fonts.primaryText,
             fontWeight: FontWeight.w600),
     );
   }

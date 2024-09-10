@@ -52,7 +52,7 @@ class _WatchLaterScreenState extends State<WatchLaterScreen> {
                   text: 'error',
                   color: AppColors.secondaryColor,
                   fontSize: 25,
-                  fontFamily: Fonts.labelText,
+                  fontFamily: Fonts.primaryText,
                   fontWeight: FontWeight.bold),
             );
           }

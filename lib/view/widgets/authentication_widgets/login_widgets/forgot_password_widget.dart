@@ -27,7 +27,7 @@ class ForgotPasswordWidget extends StatelessWidget {
                 text: 'forgot password?',
                 color: AppColors.primaryColor,
                 fontSize: 14,
-                fontFamily: Fonts.labelText,
+                fontFamily: Fonts.primaryText,
                 fontWeight: FontWeight.w600),
           ),
         ],

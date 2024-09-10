@@ -11,8 +11,8 @@ import 'package:wave_learning_app/view/screens/mobile/mobile_login_screen.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_image_asset.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
-
+  const SplashScreen({super.key,  this.apiKey});
+final String? apiKey;
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
           if (state is AuthenticatedState) {
             Timer(const Duration(seconds: 3), () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (ctx) => const CustomBottomNavigationBar()));
+                  builder: (ctx) =>  const CustomBottomNavigationBar()));
             });
           } else if (state is UnAuthenticatedState) {
             Timer(const Duration(seconds: 3), () {
@@ -72,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       pause: const Duration(microseconds: 100),
                     ),
                   ),
-                ],
+              ],
               ),
             ],
           ),

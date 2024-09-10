@@ -50,19 +50,19 @@ class _ChannelScreenState extends State<ChannelScreen>
                 text: 'VIDEOS'.toLowerCase(),
                 color: AppColors.backgroundColor,
                 fontSize: 20,
-                fontFamily: Fonts.labelText,
+                fontFamily: Fonts.primaryText,
                 fontWeight: FontWeight.w500),
             CustomText(
                 text: 'PLAYLISTS'.toLowerCase(),
                 color: AppColors.backgroundColor,
                 fontSize: 20,
-                fontFamily: Fonts.labelText,
+                fontFamily: Fonts.primaryText,
                 fontWeight: FontWeight.w500),
             CustomText(
                 text: 'about',
                 color: AppColors.backgroundColor,
                 fontSize: 20,
-                fontFamily: Fonts.labelText,
+                fontFamily: Fonts.primaryText,
                 fontWeight: FontWeight.w500)
           ],
         ),

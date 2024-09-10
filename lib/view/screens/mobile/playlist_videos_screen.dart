@@ -67,7 +67,7 @@ class _PlaylistVideosScreenState extends State<PlaylistVideosScreen> {
                 text: 'Add videos',
                 color: AppColors.backgroundColor,
                 fontSize: 10,
-                fontFamily: Fonts.labelText,
+                fontFamily: Fonts.primaryText,
                 fontWeight: FontWeight.w500),
           ),
         ),

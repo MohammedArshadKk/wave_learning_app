@@ -2,7 +2,9 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_learning_app/view/screens/mobile/video_upload_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
+import 'package:wave_learning_app/view/screens/mobile/video_conference_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dart';
 import 'package:wave_learning_app/view/widgets/home_widgets/channel_not_created_alert_box.dart';
@@ -43,7 +45,29 @@ class TopSheetWidget extends StatelessWidget {
               BlocListener<ChannelCreatedOrNotBloc, ChannelCreatedOrNotState>(
                 listener: (context, state) {
                   if (state is ChannelCreatedState) {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx)=> VideoUploadScreen()));
+                    PanaraConfirmDialog.show(context,
+                        message: 'Create Metting',
+                        confirmButtonText: 'create',
+                        cancelButtonText: 'cancel', onTapConfirm: () {
+                      // context
+                      //     .read<CreateMeetingCubit>()
+                      //     .pikeChannelid(_auth.currentUser!.uid);
+                   final appSign=  dotenv.env['zegocloud_app_sign'];
+                   final appID=  dotenv.env['zegocloud_app_id']; 
+                   log(appSign.toString());
+                   log(appID.toString());
+                      Navigator.push( 
+                          context,
+                          MaterialPageRoute(
+                              builder: (ctx) => VideoConferenceScreen(
+                                  conferenceID: '1234567890asd',
+                                  uid: _auth.currentUser!.uid,
+                                  appID:int.parse(appID!),
+                                  appSign:appSign !,
+                                  )));
+                    }, onTapCancel: () {
+                      Navigator.pop(context);
+                    }, panaraDialogType: PanaraDialogType.values.first);
                   } else if (state is ChannelNotCreatedState) {
                     channelNotCreatedAlertBox(context);
                   }

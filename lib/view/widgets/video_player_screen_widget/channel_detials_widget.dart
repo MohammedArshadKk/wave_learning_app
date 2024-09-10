@@ -62,13 +62,13 @@ class _ChannelDetialsWidgetState extends State<ChannelDetialsWidget> {
                   text: widget.channelName,
                   color: AppColors.secondaryColor,
                   fontSize: 20,
-                  fontFamily: Fonts.labelText,
+                  fontFamily: Fonts.primaryText,
                   fontWeight: FontWeight.w600),
               CustomText(
                   text: "${widget.totalVideos} members",
                   color: AppColors.secondaryColor,
                   fontSize: 16,
-                  fontFamily: Fonts.labelText,
+                  fontFamily: Fonts.primaryText,
                   fontWeight: FontWeight.w500),
             ],
           ),
@@ -95,7 +95,7 @@ class _ChannelDetialsWidgetState extends State<ChannelDetialsWidget> {
                             text: 'Joined',
                             color: AppColors.primaryColor,
                             fontSize: 16,
-                            fontFamily: Fonts.labelText,
+                            fontFamily: Fonts.primaryText,
                             fontWeight: FontWeight.w500),
                       ),
                     );
@@ -110,7 +110,7 @@ class _ChannelDetialsWidgetState extends State<ChannelDetialsWidget> {
                             text: 'join',
                             color: AppColors.backgroundColor,
                             fontSize: 16,
-                            fontFamily: Fonts.labelText,
+                            fontFamily: Fonts.primaryText,
                             fontWeight: FontWeight.w500),
                       ),
                     );
