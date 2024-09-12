@@ -6,8 +6,8 @@ import 'package:wave_learning_app/view/utils/custom_widgets/app_bar_text.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/loading_widget.dart';
-import 'package:wave_learning_app/view/widgets/watch_later_widgets/watch_later_videos_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/loading_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/watch_later_widgets/watch_later_videos_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/watch_later_cubit/watch_later_cubit.dart';
 
 class WatchLaterScreen extends StatefulWidget {

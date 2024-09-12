@@ -12,17 +12,35 @@ class ChannelCreatedOrNotBloc
     extends Bloc<ChannelCreatedOrNotEvent, ChannelCreatedOrNotState> {
   ChannelCreatedOrNotBloc() : super(ChannelCreatedOrNotInitial()) {
     on<ChekingChannelcreatedEvent>(chekingChannelcreatedEvent);
+    on<ChekingChannelcreatedMeetingEvent>(chekingChannelcreatedMeetingEvent);
   }
 
   FutureOr<void> chekingChannelcreatedEvent(ChekingChannelcreatedEvent event,
       Emitter<ChannelCreatedOrNotState> emit) async {
     try {
       final channelcount = await checkChannelCreatedOrNot(event.uid);
-      if (channelcount==1) {
+      if (channelcount == 1) {
         log('created');
         emit(ChannelCreatedState());
-      }else{
-        log('not created'); 
+      } else {
+        log('not created');
+        emit(ChannelNotCreatedState());
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  FutureOr<void> chekingChannelcreatedMeetingEvent(
+      ChekingChannelcreatedMeetingEvent event,
+      Emitter<ChannelCreatedOrNotState> emit) async {
+    try {
+      final channelcount = await checkChannelCreatedOrNot(event.uid);
+      if (channelcount == 1) {
+        log('created');
+        emit(ChannelCreatedMeetingState());
+      } else {
+        log('not created');
         emit(ChannelNotCreatedState());
       }
     } catch (e) {

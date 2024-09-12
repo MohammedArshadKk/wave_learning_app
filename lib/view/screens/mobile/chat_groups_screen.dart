@@ -9,8 +9,8 @@ import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text_form_field.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
-import 'package:wave_learning_app/view/widgets/chat_screen_widget/tile_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/loading_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/chat_screen_widget/tile_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/loading_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/chat_cubit/chat_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/get_joined_channels/get_joined_channels_cubit.dart';
  
@@ -93,6 +93,7 @@ class _ChatGroupScreenState extends State<ChatGroupScreen> {
                                 child: ChatScreen(
                                   channelModel: channel,
                                   uid: _auth.currentUser!.uid,
+                                  name:_auth.currentUser!.displayName! ,
                                 ),
                               ),
                             ));

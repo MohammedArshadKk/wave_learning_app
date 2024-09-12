@@ -6,5 +6,6 @@ sealed class ChannelCreatedOrNotState {}
 final class ChannelCreatedOrNotInitial extends ChannelCreatedOrNotState {}
 
 class ChannelCreatedState extends ChannelCreatedOrNotState {}
+class ChannelCreatedMeetingState extends ChannelCreatedOrNotState {}
 
 class ChannelNotCreatedState extends ChannelCreatedOrNotState {}

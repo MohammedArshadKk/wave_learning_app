@@ -10,15 +10,16 @@ class VideoConferenceScreen extends StatelessWidget {
       required this.conferenceID,
       required this.uid,
       required this.appSign,
-      required this.appID});
+      required this.appID, 
+      required this.username});
   final String conferenceID;
   final String uid;
   final String appSign;
   final int appID;
+  final String username;
   @override
   Widget build(BuildContext context) {
-    // log(appSign); 
-    // log(appID.toString());
+    
 
     return SafeArea(
       child: ZegoUIKitPrebuiltVideoConference(
@@ -26,7 +27,7 @@ class VideoConferenceScreen extends StatelessWidget {
           appSign: appSign,
           conferenceID: conferenceID,
           userID: uid,
-          userName: 'userName',
+          userName: username, 
           config: ZegoUIKitPrebuiltVideoConferenceConfig()),
     );
   }

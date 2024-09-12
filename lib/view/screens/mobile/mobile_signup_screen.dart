@@ -6,14 +6,16 @@ import 'package:wave_learning_app/view_model/blocs/authentication%20bloc/authent
 import 'package:wave_learning_app/view/screens/common_screens/custom_bottom_navigation_bar.dart';
 import 'package:wave_learning_app/view/screens/mobile/verification_screen.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/sign_in_with_google_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/sign_up_widgets/have_an_account_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/sign_up_widgets/sign_image_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/sign_up_widgets/sign_up_button_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/sign_up_widgets/sign_up_text_form_field.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/login_widgets/sign_in_with_google_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/sign_up_widgets/have_an_account_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/sign_up_widgets/sign_image_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/sign_up_widgets/sign_up_button_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/sign_up_widgets/sign_up_text_form_field.dart';
 
 class MobileSignUpScreen extends StatefulWidget {
-  const MobileSignUpScreen({super.key,});
+  const MobileSignUpScreen({
+    super.key,
+  });
 
   @override
   State<MobileSignUpScreen> createState() => _MobileSignUpScreenState();
@@ -45,7 +47,7 @@ class _MobileSignUpScreenState extends State<MobileSignUpScreen> {
               } else if (state is SignInWithGooglestate) {
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (ctx) =>  CustomBottomNavigationBar()));
+                    builder: (ctx) => const CustomBottomNavigationBar()));
               } else if (state is UnAuthenticatedState) {
                 Navigator.pop(context);
                 log('error');

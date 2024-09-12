@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:wave_learning_app/model/user_model.dart';
 
@@ -11,8 +12,9 @@ class AuthRepository {
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
   signUpWithEmailAndPassword(UserModel user, String password) async {
-    final UserCredential userCredential = await _auth
-        .createUserWithEmailAndPassword(email: user.email.toString(), password: password);
+    final UserCredential userCredential =
+        await _auth.createUserWithEmailAndPassword(
+            email: user.email.toString(), password: password);
     return userCredential.user;
   }
 
@@ -24,19 +26,26 @@ class AuthRepository {
   }
 
   signInWithGoogle() async {
-    final GoogleSignInAccount? googleSignInAccount =
-        await googleSignIn.signIn();
-    if (googleSignInAccount != null) {
-      final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
-      final AuthCredential credential = GoogleAuthProvider.credential(
-          idToken: googleSignInAuthentication.idToken,
-          accessToken: googleSignInAuthentication.accessToken);
-      final userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
-      log(userCredential.user!.email.toString());
-      log(userCredential.user!.displayName.toString());
+    if (kIsWeb) {
+      GoogleAuthProvider authProvider = GoogleAuthProvider();
+      final UserCredential userCredential =
+          await _auth.signInWithPopup(authProvider);
       return userCredential.user;
+    } else {
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+        final AuthCredential credential = GoogleAuthProvider.credential(
+            idToken: googleSignInAuthentication.idToken,
+            accessToken: googleSignInAuthentication.accessToken);
+        final userCredential =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+        log(userCredential.user!.email.toString());
+        log(userCredential.user!.displayName.toString());
+        return userCredential.user;
+      }
     }
   }
 

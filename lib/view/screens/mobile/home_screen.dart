@@ -5,10 +5,10 @@ import 'package:wave_learning_app/view/screens/mobile/search_video_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
 import 'package:wave_learning_app/view/utils/icons.dart';
-import 'package:wave_learning_app/view/widgets/home_widgets/drawer_widget.dart';
-import 'package:wave_learning_app/view/widgets/home_widgets/home_loading.dart';
-import 'package:wave_learning_app/view/widgets/home_widgets/list_of_videos_widget.dart';
-import 'package:wave_learning_app/view/widgets/home_widgets/top_sheet_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/drawer_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/home_loading.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/list_of_videos_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/top_sheet_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/get_all_videos%20cubit/get_all_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/search_videos_cubit/search_videos_cubit.dart';
 

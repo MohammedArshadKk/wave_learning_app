@@ -7,12 +7,12 @@ import 'package:wave_learning_app/view_model/blocs/check%20channel%20created%20o
 import 'package:wave_learning_app/view_model/blocs/get_channel_details_bloc/get_channel_details_bloc.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/widgets/create_channel_widgets/channel_create_text_form_filed.dart';
-import 'package:wave_learning_app/view/widgets/create_channel_widgets/create_button.dart';
-import 'package:wave_learning_app/view/widgets/create_channel_widgets/create_channel_icon_non_selected_wedget.dart';
-import 'package:wave_learning_app/view/widgets/create_channel_widgets/create_icon_picked_widget.dart';
-import 'package:wave_learning_app/view/widgets/create_channel_widgets/edit_icon_non_selected_wedget.dart';
-import 'package:wave_learning_app/view/widgets/create_channel_widgets/edit_icon_selected_wedget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/create_channel_widgets/channel_create_text_form_filed.dart';
+import 'package:wave_learning_app/view/widgets/mobile/create_channel_widgets/create_button.dart';
+import 'package:wave_learning_app/view/widgets/mobile/create_channel_widgets/create_channel_icon_non_selected_wedget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/create_channel_widgets/create_icon_picked_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/create_channel_widgets/edit_icon_non_selected_wedget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/create_channel_widgets/edit_icon_selected_wedget.dart';
 
 class CreateChannelScreen extends StatefulWidget {
   const CreateChannelScreen(

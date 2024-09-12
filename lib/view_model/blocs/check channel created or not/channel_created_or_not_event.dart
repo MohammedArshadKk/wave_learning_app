@@ -8,4 +8,10 @@ class ChekingChannelcreatedEvent extends ChannelCreatedOrNotEvent {
 
   ChekingChannelcreatedEvent({required this.uid});
 }
+class ChekingChannelcreatedMeetingEvent extends ChannelCreatedOrNotEvent {
+  final String uid;
+
+  ChekingChannelcreatedMeetingEvent({required this.uid});
+
+}
 

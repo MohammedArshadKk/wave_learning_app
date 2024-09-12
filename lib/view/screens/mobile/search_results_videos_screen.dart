@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/loading_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/videos_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/loading_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/videos_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/search_videos_cubit/search_videos_cubit.dart';
 
 class SearchResultsVideosScreen extends StatefulWidget {

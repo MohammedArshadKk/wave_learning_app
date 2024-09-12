@@ -113,4 +113,30 @@ class ChatCubit extends Cubit<ChatState> {
       log(e.toString());
     }
   }
+
+  sendConferenceLink(String docId, String uid) async {
+    try {
+      final userQuerySnapshot = await db
+          .collection('users')
+          .where('uid', isEqualTo: uid)
+          .limit(1)
+          .get();
+      final userName = userQuerySnapshot.docs.isNotEmpty
+          ? userQuerySnapshot.docs.first.data()['userName']
+          : 'Unknown User';
+          await db
+          .collection('channels')
+          .doc(docId)
+          .collection('message')
+          .add({
+        'uid': uid,
+        'massageText': '',
+        'timestamp': FieldValue.serverTimestamp(),
+        'type': 'meeting', 
+        'userName': userName,
+      });
+    } catch (e) {
+      log(e.toString());
+    }
+  }
 }

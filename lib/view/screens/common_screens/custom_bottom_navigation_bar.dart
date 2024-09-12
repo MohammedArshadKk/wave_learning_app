@@ -10,8 +10,8 @@ import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dar
 import 'package:wave_learning_app/view_model/cubits/get_joined_channels/get_joined_channels_cubit.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({super.key, });
-
+  const CustomBottomNavigationBar({super.key, this.index=0, });
+  final int index;
   @override
   Widget build(BuildContext context) {
     List<Widget> screens = [
@@ -20,7 +20,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         create: (context) => GetJoinedChannelsCubit(),
         child: const ChatGroupScreen(),
       ),
-       ChatBotScreen(),
+       const ChatBotScreen(),
       const ProfileScreen()
     ];
     return Scaffold(
@@ -28,7 +28,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       body: BlocBuilder<BottomNavigationBlocBloc, BottomNavigationBlocState>(
           builder: (context, state) {
         int currentIndex =
-            (state is ItemSelectedstate) ? state.selectedIndex : 0;
+            (state is ItemSelectedstate) ? state.selectedIndex : index;
 
         return screens[currentIndex];
       }),

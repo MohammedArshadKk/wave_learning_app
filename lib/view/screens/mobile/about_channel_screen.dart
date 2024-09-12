@@ -5,9 +5,9 @@ import 'package:wave_learning_app/view_model/blocs/get_channel_details_bloc/get_
 import 'package:wave_learning_app/view/screens/mobile/create_channel_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
-import 'package:wave_learning_app/view/widgets/about_channel_widgets/about_image_widget.dart';
-import 'package:wave_learning_app/view/widgets/about_channel_widgets/channel_details_widget.dart';
-import 'package:wave_learning_app/view/widgets/about_channel_widgets/name_and_members.dart';
+import 'package:wave_learning_app/view/widgets/mobile/about_channel_widgets/about_image_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/about_channel_widgets/channel_details_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/about_channel_widgets/name_and_members.dart';
 
 class AboutChannelScreen extends StatefulWidget {
   const AboutChannelScreen({

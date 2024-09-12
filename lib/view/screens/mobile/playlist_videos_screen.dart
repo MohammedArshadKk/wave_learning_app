@@ -11,8 +11,8 @@ import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dar
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/loading_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/videos_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/loading_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/videos_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/fetch_playlist_videos/fetch_playlist_videos_cubit.dart';
 
 class PlaylistVideosScreen extends StatefulWidget {

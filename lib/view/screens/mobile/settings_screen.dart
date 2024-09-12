@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wave_learning_app/view/screens/mobile/mobile_login_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/app_bar_text.dart';
-import 'package:wave_learning_app/view/widgets/settings_widgets/settings_itoms_widgets.dart';
+import 'package:wave_learning_app/view/widgets/mobile/settings_widgets/settings_itoms_widgets.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsScreen({super.key});
@@ -16,7 +16,10 @@ class SettingsScreen extends StatelessWidget {
         iconTheme: IconThemeData(color: AppColors.backgroundColor),
         backgroundColor: AppColors.primaryColor,
         toolbarHeight: 100,
-        title: const AppBarText(text: 'Settings',),
+        title: const Center(
+            child: AppBarText(
+          text: 'Settings',
+        )),
       ),
       backgroundColor: AppColors.backgroundColor,
       body: Column(

@@ -5,12 +5,12 @@ import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view_model/blocs/authentication%20bloc/authentication_bloc.dart';
 import 'package:wave_learning_app/view/screens/common_screens/custom_bottom_navigation_bar.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/dont_have_an_account_text_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/forgot_password_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/login_button_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/login_image_widgets.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/login_text_form_widgets.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/login_widgets/sign_in_with_google_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/login_widgets/dont_have_an_account_text_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/login_widgets/forgot_password_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/login_widgets/login_button_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/login_widgets/login_image_widgets.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/login_widgets/login_text_form_widgets.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/login_widgets/sign_in_with_google_widget.dart';
 
 class MobileLoginScreen extends StatefulWidget {
   const MobileLoginScreen({super.key,});
@@ -36,11 +36,11 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
               } else if (state is AuthenticatedState) {
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (ctx) =>  CustomBottomNavigationBar()));
+                    builder: (ctx) =>  const CustomBottomNavigationBar()));
               } else if (state is SignInWithGooglestate) {
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (ctx) =>  CustomBottomNavigationBar()));
+                    builder: (ctx) =>  const CustomBottomNavigationBar()));
               } else if (state is UnAuthenticatedState) {
                 Navigator.pop(context);
                 log('error');

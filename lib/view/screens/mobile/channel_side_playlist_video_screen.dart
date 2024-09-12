@@ -4,8 +4,8 @@ import 'package:wave_learning_app/model/playlist_model.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/app_bar_text.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/loading_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/videos_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/loading_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/videos_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/fetch_playlist_videos/fetch_playlist_videos_cubit.dart';
 
 class ChannelSidePlaylistVideoScreen extends StatefulWidget {

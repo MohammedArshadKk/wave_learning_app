@@ -2,12 +2,13 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:wave_learning_app/services/repositories/auth/auth_repository.dart';
 import 'package:wave_learning_app/model/user_model.dart';
 import 'package:wave_learning_app/view/screens/common_screens/custom_bottom_navigation_bar.dart';
 part 'authentication_event.dart';
-part 'authentication_state.dart';    
+part 'authentication_state.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
@@ -35,7 +36,7 @@ class AuthenticationBloc
       } else {
         emit(UnAuthenticatedState());
       }
-    } catch (e) {  
+    } catch (e) {
       log(e.toString());
       emit(AuthErrorState(error: e.toString()));
     }
@@ -60,11 +61,14 @@ class AuthenticationBloc
 
   FutureOr<void> signInWithGoogleEvent(
       SignInWithGoogleEvent event, Emitter<AuthenticationState> emit) async {
-    emit(AuthLoadingState());
+    if (!kIsWeb) {
+      emit(AuthLoadingState());
+    }
+
     try {
       final user = await authRepository.signInWithGoogle();
       if (user != null) {
-      await authRepository.saveGoogleUserToDatabase();
+        await authRepository.saveGoogleUserToDatabase();
         emit(SignInWithGooglestate(user));
       } else {
         emit(UnAuthenticatedState());
@@ -94,8 +98,8 @@ class AuthenticationBloc
       VerifyEmailEvent event, Emitter<AuthenticationState> emit) async {
     await _auth.currentUser!.reload();
     if (_auth.currentUser!.emailVerified) {
-      Navigator.of(event.context).pushReplacement(MaterialPageRoute(
-          builder: (context) =>  CustomBottomNavigationBar()));
+      Navigator.of(event.context).pushReplacement(
+          MaterialPageRoute(builder: (context) => CustomBottomNavigationBar()));
     } else {
       ScaffoldMessenger.of(event.context).showSnackBar(
           const SnackBar(content: Text('error: Please conform your email')));
@@ -111,5 +115,4 @@ class AuthenticationBloc
       log('$e');
     }
   }
-
 }

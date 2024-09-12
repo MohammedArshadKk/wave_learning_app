@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/screens/mobile/channel_side_playlist_video_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/loading_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/playlist_list.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/loading_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/playlist_list.dart';
 import 'package:wave_learning_app/view_model/cubits/fetch_playlist_cubit/fetch_playlist_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/fetch_playlist_videos/fetch_playlist_videos_cubit.dart';
 

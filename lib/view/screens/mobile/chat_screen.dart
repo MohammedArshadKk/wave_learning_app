@@ -3,15 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/model/channel_model.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/app_bar_text.dart';
-import 'package:wave_learning_app/view/widgets/chat_screen_widget/chat_message_widget.dart';
-import 'package:wave_learning_app/view/widgets/chat_screen_widget/chat_send_form_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/chat_screen_widget/chat_message_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/chat_screen_widget/chat_send_form_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/chat_cubit/chat_cubit.dart';
 
 class ChatScreen extends StatelessWidget {
-  ChatScreen({super.key, required this.channelModel, required this.uid});
+  ChatScreen({super.key, required this.channelModel, required this.uid, required this.name});
 
   final ChannelModel channelModel;
   final String uid;
+  final String name;
   final TextEditingController massageController = TextEditingController();
 
   @override
@@ -51,6 +52,7 @@ class ChatScreen extends StatelessWidget {
           ChatMessageWidget(
             uid: uid,
             id: id,
+            name: name,
           ),
           SendFormWidget(massageController: massageController, uid: uid, id: id)
         ],

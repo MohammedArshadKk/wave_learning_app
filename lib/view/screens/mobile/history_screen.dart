@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/app_bar_text.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/loading_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/videos_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/loading_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/videos_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/history_cubit/history_cubit.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return Scaffold(  
        backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        title: const AppBarText(text: 'History'),
+        title: const Center(child: AppBarText(text: 'History')),
         toolbarHeight: 100,
         backgroundColor: AppColors.primaryColor,
       ),

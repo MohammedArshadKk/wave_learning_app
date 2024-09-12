@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view_model/blocs/authentication%20bloc/authentication_bloc.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/forgot_password_screen_widgets/after_link_send_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/forgot_password_screen_widgets/before_send_link_widget.dart';
-import 'package:wave_learning_app/view/widgets/authentication_widgets/forgot_password_screen_widgets/image_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/forgot_password_screen_widgets/after_link_send_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/forgot_password_screen_widgets/before_send_link_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/forgot_password_screen_widgets/image_widget.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   ForgotPasswordScreen({super.key});
@@ -23,7 +23,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             BlocBuilder<AuthenticationBloc, AuthenticationState>(
               builder: (context, state) {
                 if (state is ForgotPasswordLinkSendedState) {
-                  Future.delayed(const Duration(seconds: 10), () {
+                  Future.delayed(const Duration(seconds: 30), () {
                     Navigator.pop(context);
                   });
                 }

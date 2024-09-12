@@ -4,14 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view_model/blocs/check%20channel%20created%20or%20not/channel_created_or_not_bloc.dart';
 import 'package:wave_learning_app/view_model/functions/init_functions.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/widgets/profile_widgets/about_channel_widget.dart';
-import 'package:wave_learning_app/view/widgets/profile_widgets/create_channel_grid_widget.dart';
-import 'package:wave_learning_app/view/widgets/profile_widgets/grid_history_wedget.dart';
-import 'package:wave_learning_app/view/widgets/profile_widgets/grid_like_widget.dart';
-import 'package:wave_learning_app/view/widgets/profile_widgets/grid_settings_widget.dart';
-import 'package:wave_learning_app/view/widgets/profile_widgets/grid_user_videos_widget.dart';
-import 'package:wave_learning_app/view/widgets/profile_widgets/grid_watch_later_widget.dart';
-import 'package:wave_learning_app/view/widgets/profile_widgets/profile_user_details.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/about_channel_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/create_channel_grid_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/grid_history_wedget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/grid_like_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/grid_settings_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/grid_user_videos_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/grid_watch_later_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/profile_user_details.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

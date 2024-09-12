@@ -5,8 +5,8 @@ import 'package:wave_learning_app/view/screens/mobile/channel_side_playlist_scre
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
-import 'package:wave_learning_app/view/widgets/channel_screen_widgets/about_widget.dart';
-import 'package:wave_learning_app/view/widgets/channel_screen_widgets/videos_channel_screen.dart';
+import 'package:wave_learning_app/view/widgets/mobile/channel_screen_widgets/about_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/channel_screen_widgets/videos_channel_screen.dart';
 import 'package:wave_learning_app/view_model/cubits/fetch_playlist_cubit/fetch_playlist_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/get_channel_videos_cubit/get_channel_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/join_channel_cubit/join_channel_cubit.dart';

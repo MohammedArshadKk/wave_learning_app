@@ -18,6 +18,7 @@ class CreateMeetingCubit extends Cubit<CreateMeetingState> {
           .get();
       final channelId = querySnapshot.docs.first.id;
       log(channelId);
+      emit(PikedChannelidStete(id: channelId));
     } catch (e) {
       log(e.toString());
     }

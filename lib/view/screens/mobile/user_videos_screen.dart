@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/app_bar_text.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/loading_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/playlist_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/tab_bar_text.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/videos_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/loading_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/playlist_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/tab_bar_text.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/videos_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/fetch_user_videos_cubit/fetch_user_videos_cubit.dart';
 
 class UserVideosScreen extends StatefulWidget {
@@ -48,7 +48,7 @@ class _UserVideosScreenState extends State<UserVideosScreen>
       appBar: AppBar(
         iconTheme: IconThemeData(color: AppColors.backgroundColor),
         backgroundColor: AppColors.primaryColor,
-        title: const AppBarText(text: 'Your Videos'),
+        title: const Center(child: AppBarText(text: 'Your Videos')),
         toolbarHeight: 100,
         bottom: TabBar(
           controller: _tabController,

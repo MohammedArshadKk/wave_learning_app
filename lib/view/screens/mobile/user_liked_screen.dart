@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/app_bar_text.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
-import 'package:wave_learning_app/view/widgets/liked_widget/liked_videos_widget.dart';
-import 'package:wave_learning_app/view/widgets/user_videos_screen_widget/loading_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/liked_widget/liked_videos_widget.dart';
+import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/loading_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/user_liked_videos_cubit/user_liked_video_cubit.dart';
 
 class UserLikedScreen extends StatefulWidget {
