@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
@@ -43,8 +45,20 @@ class MessageWidget extends StatelessWidget {
         if (type != 'text')
           GestureDetector(
             onTap: () async {
-              context.read<ChatCubit>().docOpenCubit(message);
-              context.read<ChatCubit>().fetchChatMessages(id);
+              if (kIsWeb) {
+                Fluttertoast.showToast(
+                    msg:
+                        "The document can't be opened on the web. Please use a mobile phone.",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER_RIGHT,
+                    timeInSecForIosWeb: 5,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+              } else {
+                context.read<ChatCubit>().docOpenCubit(message);
+                context.read<ChatCubit>().fetchChatMessages(id);
+              }
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

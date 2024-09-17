@@ -67,7 +67,7 @@ class WatchLaterVideosWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               CustomText(
                                 text: title,
@@ -76,7 +76,7 @@ class WatchLaterVideosWidget extends StatelessWidget {
                                 fontFamily: Fonts.primaryText,
                                 fontWeight: FontWeight.w500,
                               ),
-                              const MenuIconWidget(),
+                              
                             ],
                           ),
                           CustomText(

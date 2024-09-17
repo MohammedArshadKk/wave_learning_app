@@ -1,16 +1,14 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:wave_learning_app/model/video_model.dart';
-import 'package:wave_learning_app/view/screens/mobile/search_video_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/video_player_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
-import 'package:wave_learning_app/view_model/cubits/history_cubit/history_cubit.dart';
+import 'package:wave_learning_app/view_model/cubits/fetch_user_videos_cubit/fetch_user_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/functions/calculate_time_diff.dart';
 
 class VideosWidget extends StatelessWidget {
@@ -34,14 +32,26 @@ class VideosWidget extends StatelessWidget {
         final difference = calculateTimeDiff(video.time);
 
         return GestureDetector(
+          onLongPress: () {
+            if (_auth.currentUser!.uid == video.uid) {
+              PanaraConfirmDialog.show(context,
+                  message: 'Are you sure you want to delete this video?',
+                  confirmButtonText: 'delete',
+                  cancelButtonText: "cancel", onTapConfirm: () {
+                context.read<FetchUserVideosCubit>().deleteVideo(
+                    video.documentid.toString(), _auth.currentUser!.uid);
+                Navigator.pop(context);
+              }, onTapCancel: () {
+                Navigator.pop(context);
+              }, panaraDialogType: PanaraDialogType.error);
+            }
+          },
           onTap: () {
-            
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (ctx) => VideoPlayerScreen(
                       videoModel: video,
                       timeDiff: difference,
                     )));
-
           },
           child: Padding(
             padding: const EdgeInsets.all(10.0),

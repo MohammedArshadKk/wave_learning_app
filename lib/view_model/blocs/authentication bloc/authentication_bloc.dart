@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:wave_learning_app/services/repositories/auth/auth_repository.dart';
 import 'package:wave_learning_app/model/user_model.dart';
 import 'package:wave_learning_app/view/screens/common_screens/custom_bottom_navigation_bar.dart';
+import 'package:wave_learning_app/view/screens/web/web_navigation.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
@@ -98,8 +99,14 @@ class AuthenticationBloc
       VerifyEmailEvent event, Emitter<AuthenticationState> emit) async {
     await _auth.currentUser!.reload();
     if (_auth.currentUser!.emailVerified) {
+      if (kIsWeb) {
       Navigator.of(event.context).pushReplacement(
-          MaterialPageRoute(builder: (context) => CustomBottomNavigationBar()));
+          MaterialPageRoute(builder: (context) => const WebNavigationScreen()));
+      } else {
+              Navigator.of(event.context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const CustomBottomNavigationBar()));
+      }
+
     } else {
       ScaffoldMessenger.of(event.context).showSnackBar(
           const SnackBar(content: Text('error: Please conform your email')));

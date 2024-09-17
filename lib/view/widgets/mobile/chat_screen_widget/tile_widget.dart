@@ -73,6 +73,8 @@ class CustomChatTile extends StatelessWidget {
                               }
                             } else if (lastMessage['type'] == 'document') {
                               text = 'document';
+                            }else if(lastMessage['type']=='meeting'){
+                              text='video conference link';
                             }
 
                             return CustomText(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/screens/common_screens/custom_bottom_navigation_bar.dart';
 import 'package:wave_learning_app/view/screens/web/web_login_screen.dart';
+import 'package:wave_learning_app/view/screens/web/web_navigation.dart';
 import 'package:wave_learning_app/view/screens/web/web_verification_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
@@ -48,7 +49,7 @@ class WebSignUpScreen extends StatelessWidget {
                 );
               } else if (state is SignInWithGooglestate) {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (ctx) => const CustomBottomNavigationBar()));
+                    builder: (ctx) => const WebNavigationScreen()));
               } else if (state is UnAuthenticatedState) {
                 Navigator.pop(context);
                 log('error');

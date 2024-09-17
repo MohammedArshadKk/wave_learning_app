@@ -64,6 +64,7 @@ class ChatBotMessagesWidget extends StatelessWidget {
                           animatedTexts: [
                             TyperAnimatedText(
                               text.toString(),      
+                              speed: Duration(milliseconds: 10),
                               textStyle:   TextStyle(
                                 fontSize: 18,
                                 color: AppColors.secondaryColor,

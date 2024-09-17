@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/screens/common_screens/custom_bottom_navigation_bar.dart';
@@ -8,15 +9,18 @@ import 'package:wave_learning_app/view/screens/mobile/settings_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/user_liked_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/user_videos_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/watch_later_screen.dart';
+import 'package:wave_learning_app/view/screens/web/web_navigation.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_drawer_itom_widget.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/icons.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
+import 'package:wave_learning_app/view/widgets/web/web_auth_text.dart';
 import 'package:wave_learning_app/view_model/cubits/get_all_channels_cubit/get_allchannels_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/get_joined_channels/get_joined_channels_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/user_liked_videos_cubit/user_liked_video_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/watch_later_cubit/watch_later_cubit.dart';
+import 'package:wave_learning_app/view_model/cubits/web_navigation_cubit/web_navigation_cubit.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -34,9 +38,13 @@ class DrawerWidget extends StatelessWidget {
               text: 'Home',
               icon: AppIcons.homeIcon,
               onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => const CustomBottomNavigationBar(),
-                ));
+                if (kIsWeb) {
+                  context.read<WebNavigationCubit>().itemSelected(0);
+                } else {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const CustomBottomNavigationBar(),
+                  ));
+                }
               },
             ),
             GestureDetector(
@@ -54,11 +62,15 @@ class DrawerWidget extends StatelessWidget {
               text: 'Chats',
               icon: AppIcons.chatIcon,
               onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => const CustomBottomNavigationBar(
-                    index: 1,
-                  ),
-                ));
+                if (kIsWeb) {
+                  context.read<WebNavigationCubit>().itemSelected(1);
+                } else {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const CustomBottomNavigationBar(
+                      index: 1,
+                    ),
+                  ));
+                }
               },
             ),
             const Padding(
@@ -143,7 +155,7 @@ class DrawerWidget extends StatelessWidget {
             ),
             CustomDrawerItomWidget(
               text: 'Settings',
-              icon: AppIcons.settingsIcon, 
+              icon: AppIcons.settingsIcon,
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SettingsScreen(),

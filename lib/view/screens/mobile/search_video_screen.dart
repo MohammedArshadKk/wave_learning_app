@@ -7,10 +7,14 @@ import 'package:wave_learning_app/view/utils/images_fonts.dart';
 import 'package:wave_learning_app/view_model/cubits/search_videos_cubit/search_videos_cubit.dart';
 
 class SearchVideoScreen extends StatelessWidget {
-   SearchVideoScreen({super.key});
-final TextEditingController searchController= TextEditingController();
+  SearchVideoScreen({super.key});
+  final TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool isSmallScreen = screenSize.width < 600;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -19,59 +23,77 @@ final TextEditingController searchController= TextEditingController();
         title: CustomText(
           text: 'Search Videos',
           color: Colors.black87,
-          fontSize: 20,
+          fontSize: isSmallScreen ? 18 : 24,
           fontFamily: Fonts.primaryText,
           fontWeight: FontWeight.normal,
         ),
       ),
-      body: Column(
-        children: [
-          _buildSearchBar(context),
-          Expanded(
-            child: BlocBuilder<SearchVideosCubit, SearchVideosState>(
-              builder: (context, state) {
-                if (state is SearchState) {
-                  if (state.isLoading) {
-                    return _buildLoadingIndicator();
-                  } else if (state.suggestions.isEmpty) {
-                    return _buildEmptyState('No results found');
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.05),
+        child: Column(
+          children: [
+            _buildSearchBar(context, isSmallScreen),
+            Expanded(
+              child: BlocBuilder<SearchVideosCubit, SearchVideosState>(
+                builder: (context, state) {
+                  if (state is SearchState) {
+                    if (state.isLoading) {
+                      return _buildLoadingIndicator();
+                    } else if (state.suggestions.isEmpty) {
+                      return _buildEmptyState(
+                          'No results found', isSmallScreen);
+                    } else {
+                      return _buildSuggestionsList(
+                          state.suggestions, isSmallScreen);
+                    }
                   } else {
-                    return _buildSuggestionsList(state.suggestions);
+                    return _buildEmptyState('Search for videos', isSmallScreen);
                   }
-                } else {
-                  return _buildEmptyState('Search for videos');
-                }
-              },
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildSearchBar(BuildContext context) {
+  Widget _buildSearchBar(BuildContext context, bool isSmallScreen) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.symmetric(vertical: isSmallScreen ? 8.0 : 16.0),
       child: TextField(
         onChanged: (query) {
-          context.read<SearchVideosCubit>().searchVideo(query);
+          context.read<SearchVideosCubit>().debounceSearch(query.toLowerCase());
         },
-        controller:searchController , 
+        controller: searchController,
+        style: TextStyle(fontSize: isSmallScreen ? 14 : 16),
         decoration: InputDecoration(
           hintText: 'Search...',
-          hintStyle: TextStyle(color: Colors.grey[400]),  
-          suffixIcon: IconButton(onPressed: (){
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (ctx) => BlocProvider(
-                      create: (context) => SearchVideosCubit(),
-                      child:  SearchResultsVideosScreen(text: searchController.text,), 
-                    )));
-          }, icon: Icon(Icons.search)),
+          hintStyle: TextStyle(
+              color: Colors.grey[400], fontSize: isSmallScreen ? 14 : 16),
+          suffixIcon: IconButton(
+            onPressed: () {
+              if (searchController.text.isNotEmpty) {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (ctx) => BlocProvider(
+                    create: (context) => SearchVideosCubit(),
+                    child: SearchResultsVideosScreen(
+                        text: searchController.text.toLowerCase()),
+                  ),
+                ));
+              }
+            },
+            icon: Icon(Icons.search, size: isSmallScreen ? 20 : 24),
+          ),
           filled: true,
           fillColor: Colors.grey[100],
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(isSmallScreen ? 6 : 8),
             borderSide: BorderSide.none,
+          ),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: isSmallScreen ? 12 : 16,
+            vertical: isSmallScreen ? 8 : 12,
           ),
         ),
       ),
@@ -82,31 +104,43 @@ final TextEditingController searchController= TextEditingController();
     return const Center(child: CircularProgressIndicator());
   }
 
-  Widget _buildEmptyState(String message) {
-    return SingleChildScrollView(child: NoDataWidget(text: message));
+  Widget _buildEmptyState(String message, bool isSmallScreen) {
+    return SingleChildScrollView(
+      child: Center(
+        child: NoDataWidget(
+          text: message,
+        ),
+      ),
+    );
   }
 
-  Widget _buildSuggestionsList(List<String> suggestions) {
+  Widget _buildSuggestionsList(List<String> suggestions, bool isSmallScreen) {
     return ListView.separated(
       itemCount: suggestions.length,
       separatorBuilder: (context, index) =>
           Divider(height: 1, color: Colors.grey[200]),
       itemBuilder: (context, index) {
         return ListTile(
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: isSmallScreen ? 8 : 16,
+            vertical: isSmallScreen ? 4 : 8,
+          ),
           title: CustomText(
             text: suggestions[index],
             color: Colors.black87,
-            fontSize: 16,
+            fontSize: isSmallScreen ? 14 : 16,
             fontFamily: Fonts.primaryText,
             fontWeight: FontWeight.normal,
           ),
-          trailing: Icon(Icons.north_west, color: Colors.grey[400], size: 18),
+          trailing: Icon(Icons.north_west,
+              color: Colors.grey[400], size: isSmallScreen ? 16 : 18),
           onTap: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (ctx) => BlocProvider(
-                      create: (context) => SearchVideosCubit(),
-                      child:  SearchResultsVideosScreen(text:suggestions[index] ,), 
-                    )));
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (ctx) => BlocProvider(
+                create: (context) => SearchVideosCubit(),
+                child: SearchResultsVideosScreen(text: suggestions[index]),
+              ),
+            ));
           },
         );
       },

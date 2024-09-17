@@ -19,3 +19,5 @@ class ErrorState extends FetchUserVideosState {
   final String error;
   ErrorState(this.error);
 }
+
+class DeleteVideoState extends FetchUserVideosState {}

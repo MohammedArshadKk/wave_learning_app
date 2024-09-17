@@ -34,7 +34,7 @@ class _SearchResultsVideosScreenState extends State<SearchResultsVideosScreen> {
         builder: (context, state) {
           if (state is LoadingState) {
             return const LoadingWidget();
-          }else if(state is VideoPickedState){
+          } else if (state is VideoPickedState) {
             return VideosWidget(videos: state.listVideoModel);
           }
           return Container();

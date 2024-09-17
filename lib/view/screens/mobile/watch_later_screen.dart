@@ -16,7 +16,7 @@ class WatchLaterScreen extends StatefulWidget {
   @override
   State<WatchLaterScreen> createState() => _WatchLaterScreenState();
 }
-  
+
 class _WatchLaterScreenState extends State<WatchLaterScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
@@ -36,7 +36,7 @@ class _WatchLaterScreenState extends State<WatchLaterScreen> {
         iconTheme: IconThemeData(color: AppColors.backgroundColor),
         backgroundColor: AppColors.primaryColor,
         toolbarHeight: 100,
-        title: const AppBarText(text: 'Watch Later'),
+        title: const Center(child: AppBarText(text: 'Watch Later')),
       ),
       body: BlocBuilder<WatchLaterCubit, WatchLaterState>(
         builder: (context, state) {
@@ -45,7 +45,8 @@ class _WatchLaterScreenState extends State<WatchLaterScreen> {
           } else if (state is PickedWatchLaterVideos) {
             return WatchLaterVideosWidget(videos: state.videoModel);
           } else if (state is NoVideosState) {
-            return const NoDataWidget();
+            return const SingleChildScrollView(
+                child: Center(child: NoDataWidget()));
           } else {
             return Center(
               child: CustomText(

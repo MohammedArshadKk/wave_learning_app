@@ -15,11 +15,12 @@ import 'package:wave_learning_app/view/widgets/mobile/chat_screen_widget/no_mess
 import 'package:wave_learning_app/view_model/cubits/chat_cubit/chat_cubit.dart';
 
 class ChatMessageWidget extends StatelessWidget {
-  const ChatMessageWidget({super.key, required this.uid, required this.id, required this.name});
+  const ChatMessageWidget(
+      {super.key, required this.uid, required this.id, required this.name});
   final String uid;
   final String id;
   final String name;
-   
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -117,7 +118,7 @@ class ChatMessageWidget extends StatelessWidget {
                                                       appID: int.parse(dotenv
                                                               .env[
                                                           'zegocloud_app_id']!),
-                                                      username: name, 
+                                                      username: name,
                                                     ),
                                                   ),
                                                 );

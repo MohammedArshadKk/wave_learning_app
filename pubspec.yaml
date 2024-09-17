@@ -69,6 +69,8 @@ dependencies:
   google_generative_ai: ^0.4.6
   flutter_dotenv: ^5.1.0
   zego_uikit_prebuilt_video_conference: ^2.9.2
+  chewie: ^1.8.5
+  fluttertoast: ^8.2.8
   
 
 dev_dependencies:
