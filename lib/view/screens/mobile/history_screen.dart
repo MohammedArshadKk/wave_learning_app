@@ -25,9 +25,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(  
-       backgroundColor: AppColors.backgroundColor,
+    return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: AppColors.backgroundColor),
         title: const Center(child: AppBarText(text: 'History')),
         toolbarHeight: 100,
         backgroundColor: AppColors.primaryColor,
@@ -37,13 +38,20 @@ class _HistoryScreenState extends State<HistoryScreen> {
           if (state is HistoryLoading) {
             return const LoadingWidget();
           } else if (state is HistoryVideosPikedState) {
+            if (state.historyVideos.isEmpty) {
+              return const NoDataWidget(
+                text: 'No history available',
+              );
+            }
             return VideosWidget(videos: state.historyVideos);
           } else if (state is NoHistory) {
             return const NoDataWidget(
               text: 'No history available',
             );
           }
-          return Container();
+          return const NoDataWidget(
+            text: 'No history available',
+          );
         },
       ),
     );

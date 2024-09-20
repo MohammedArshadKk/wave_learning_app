@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
@@ -5,6 +6,7 @@ import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart'
 import 'package:wave_learning_app/view/widgets/mobile/home_widgets/home_loading.dart';
 import 'package:wave_learning_app/view/widgets/mobile/home_widgets/list_of_videos_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/get_all_videos%20cubit/get_all_videos_cubit.dart';
+import 'package:wave_learning_app/view_model/cubits/get_latest_joined_channel_videos_cubit/get_latest_joined_channel_videos_cubit.dart';
 
 class WebHomeScreen extends StatefulWidget {
   const WebHomeScreen({super.key});
@@ -14,9 +16,13 @@ class WebHomeScreen extends StatefulWidget {
 }
 
 class _WebHomeScreenState extends State<WebHomeScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void initState() {
     context.read<GetAllVideosCubit>().getAllVideos();
+    context
+        .read<GetLatestJoinedChannelVideosCubit>()
+        .getLatestJoinedChannelVideos(_auth.currentUser!.uid);
     super.initState();
   }
 

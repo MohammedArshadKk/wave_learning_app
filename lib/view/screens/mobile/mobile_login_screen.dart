@@ -13,7 +13,9 @@ import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/log
 import 'package:wave_learning_app/view/widgets/mobile/authentication_widgets/login_widgets/sign_in_with_google_widget.dart';
 
 class MobileLoginScreen extends StatefulWidget {
-  const MobileLoginScreen({super.key,});
+  const MobileLoginScreen({
+    super.key,
+  });
 
   @override
   State<MobileLoginScreen> createState() => _MobileLoginScreenState();
@@ -36,11 +38,11 @@ class _MobileLoginScreenState extends State<MobileLoginScreen> {
               } else if (state is AuthenticatedState) {
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (ctx) =>  const CustomBottomNavigationBar()));
+                    builder: (ctx) => const CustomBottomNavigationBar()));
               } else if (state is SignInWithGooglestate) {
                 Navigator.pop(context);
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (ctx) =>  const CustomBottomNavigationBar()));
+                    builder: (ctx) => const CustomBottomNavigationBar()));
               } else if (state is UnAuthenticatedState) {
                 Navigator.pop(context);
                 log('error');

@@ -10,7 +10,7 @@ part 'search_videos_state.dart';
 class SearchVideosCubit extends Cubit<SearchVideosState> {
   SearchVideosCubit() : super(SearchVideosInitial());
   Timer? debounce;
-
+  
   void debounceSearch(String searchText) {
     if (debounce?.isActive ?? false) {
       debounce!.cancel();

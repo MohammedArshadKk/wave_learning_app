@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/grid_history_wedget.dart';
 import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/grid_like_widget.dart';
 import 'package:wave_learning_app/view/widgets/mobile/home_widgets/profile_widgets/grid_settings_widget.dart';
@@ -11,6 +12,7 @@ class WebProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: Expanded(
         child: GridView.count(
           crossAxisCount: 3,

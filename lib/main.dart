@@ -18,6 +18,7 @@ import 'package:wave_learning_app/view_model/cubits/create_meeting_cubit/create_
 import 'package:wave_learning_app/view_model/cubits/create_playlist_cubit/create_playlist_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/fetch_user_videos_cubit/fetch_user_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/get_all_videos%20cubit/get_all_videos_cubit.dart';
+import 'package:wave_learning_app/view_model/cubits/get_latest_joined_channel_videos_cubit/get_latest_joined_channel_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/history_cubit/history_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/web_navigation_cubit/web_navigation_cubit.dart';
 import 'package:wave_learning_app/view_model/functions/video_upload_functions/initialize_background_service.dart';
@@ -31,13 +32,15 @@ void main(List<String> args) async {
   );
   Workmanager().initialize(callbackDispatcher);
   await NotificationService().initNotification();
- await dotenv.load(fileName: ".env");
-  runApp( MyApp(geminiApiKey: dotenv.env['gemini_api_key'],));
+  await dotenv.load(fileName: ".env");
+  runApp(MyApp(
+    geminiApiKey: dotenv.env['gemini_api_key'],
+  ));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.geminiApiKey});
-final String? geminiApiKey;
+  final String? geminiApiKey;
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -76,23 +79,26 @@ final String? geminiApiKey;
           create: (context) => CreatePlaylistCubit(),
         ),
         BlocProvider(
-          create: (context) => ChatCubit(), 
+          create: (context) => ChatCubit(),
         ),
         BlocProvider(
-          create: (context) => HistoryCubit(),  
+          create: (context) => HistoryCubit(),
         ),
         BlocProvider(
-          create: (context) => ChatBotCubit(apiKey: geminiApiKey),  
+          create: (context) => ChatBotCubit(apiKey: geminiApiKey),
         ),
         BlocProvider(
           create: (context) => CreateMeetingCubit(),
         ),
         BlocProvider(
-          create: (context) => WebNavigationCubit(), 
+          create: (context) => WebNavigationCubit(),
         ),
-       
+        BlocProvider(
+          create: (context) => GetLatestJoinedChannelVideosCubit(),
+        ),
+        
       ],
-      child:  MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: StartScreen(
           apiKey: geminiApiKey,

@@ -14,7 +14,7 @@ class GetAllVideosCubit extends Cubit<GetAllVideosState> {
     try {
       final FirebaseFirestore db = FirebaseFirestore.instance;
       final QuerySnapshot querySnapshot =
-          await db.collection('channelVideos').get();
+          await db.collection('channelVideos').limit(10).get();
       if (querySnapshot.docs.isEmpty) {
         emit(NoVideosState());
       } else {

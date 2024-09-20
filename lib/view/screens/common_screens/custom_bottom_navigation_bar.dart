@@ -8,19 +8,30 @@ import 'package:wave_learning_app/view/screens/mobile/chat_groups_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/profile_screen.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dart';
 import 'package:wave_learning_app/view_model/cubits/get_joined_channels/get_joined_channels_cubit.dart';
+import 'package:wave_learning_app/view_model/cubits/search_chat_groups_cubit/search_chat_groups_cubit.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({super.key, this.index=0, });
+  const CustomBottomNavigationBar({
+    super.key,
+    this.index = 0,
+  });
   final int index;
   @override
   Widget build(BuildContext context) {
     List<Widget> screens = [
       const HomeScreen(),
-      BlocProvider(
-        create: (context) => GetJoinedChannelsCubit(),
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => GetJoinedChannelsCubit(),
+          ),
+          BlocProvider(
+            create: (context) => SearchChatGroupsCubit(),
+          ),
+        ],
         child: const ChatGroupScreen(),
       ),
-       const ChatBotScreen(),
+      const ChatBotScreen(),
       const ProfileScreen()
     ];
     return Scaffold(

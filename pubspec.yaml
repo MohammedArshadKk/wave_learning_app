@@ -71,6 +71,8 @@ dependencies:
   zego_uikit_prebuilt_video_conference: ^2.9.2
   chewie: ^1.8.5
   fluttertoast: ^8.2.8
+  url_launcher: ^6.3.0
+  share_plus: ^10.0.2
   
 
 dev_dependencies:

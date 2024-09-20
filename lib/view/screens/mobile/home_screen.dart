@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_modal_sheet/top_modal_sheet.dart';
@@ -10,6 +11,7 @@ import 'package:wave_learning_app/view/widgets/mobile/home_widgets/home_loading.
 import 'package:wave_learning_app/view/widgets/mobile/home_widgets/list_of_videos_widget.dart';
 import 'package:wave_learning_app/view/widgets/mobile/home_widgets/top_sheet_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/get_all_videos%20cubit/get_all_videos_cubit.dart';
+import 'package:wave_learning_app/view_model/cubits/get_latest_joined_channel_videos_cubit/get_latest_joined_channel_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/search_videos_cubit/search_videos_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,9 +22,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void initState() {
     context.read<GetAllVideosCubit>().getAllVideos();
+    context
+        .read<GetLatestJoinedChannelVideosCubit>()
+        .getLatestJoinedChannelVideos(_auth.currentUser!.uid);
     super.initState();
   }
 
@@ -78,6 +84,19 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
+          // Expanded(
+          //   child: BlocBuilder<GetLatestJoinedChannelVideosCubit,
+          //       GetLatestJoinedChannelVideosState>(
+          //     builder: (context, state) {
+          //       if (state is LoadingGetLatestVideosState) {
+          //         return const HomeLoading();
+          //       } else if (state is PikedState) {
+          //         return ListOfVideosWidget(videos: state.videos);
+          //       }
+          //       return Container(); 
+          //     },
+          //   ),
+          // ),
           BlocBuilder<GetAllVideosCubit, GetAllVideosState>(
             builder: (context, state) {
               if (state is AllVideoFetchingLoadingState) {

@@ -16,7 +16,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.controller,
     this.validator,
     this.obscureText = false,
-    this.maxLines,
+    this.maxLines, this.onChanged,
   });
   final String labelText;
   final String fontFamily;
@@ -31,11 +31,13 @@ class CustomTextFormField extends StatelessWidget {
   final FormFieldValidator<String?>? validator;
   final bool obscureText;
   final int? maxLines;
+  final Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: paddingForm),
       child: TextFormField(
+        onChanged: onChanged,
         controller: controller,
         validator: validator,
         maxLines: maxLines,

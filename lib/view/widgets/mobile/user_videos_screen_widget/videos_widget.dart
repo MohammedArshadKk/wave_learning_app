@@ -39,7 +39,7 @@ class VideosWidget extends StatelessWidget {
                   confirmButtonText: 'delete',
                   cancelButtonText: "cancel", onTapConfirm: () {
                 context.read<FetchUserVideosCubit>().deleteVideo(
-                    video.documentid.toString(), _auth.currentUser!.uid);
+                    video.documentid.toString(), _auth.currentUser!.uid); 
                 Navigator.pop(context);
               }, onTapCancel: () {
                 Navigator.pop(context);

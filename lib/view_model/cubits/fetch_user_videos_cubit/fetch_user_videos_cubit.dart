@@ -29,11 +29,17 @@ class FetchUserVideosCubit extends Cubit<FetchUserVideosState> {
     }
   }
 
-  Future<void> deleteVideo(String docId ,String uid) async {
+  Future<void> deleteVideo(String docId, String uid) async {
     final FirebaseFirestore db = FirebaseFirestore.instance;
+    emit(VideoFetchingLoadingState());
+    QuerySnapshot querySnapshot =
+        await db.collection('history').where('videoId', isEqualTo: docId).get();
+    for (QueryDocumentSnapshot element in querySnapshot.docs) {
+      db.collection('history').doc(element.id).delete();
+    }
     await db.collection('channelVideos').doc(docId).delete();
     log('Video with docId: $docId has been deleted');
-   await fetchUserVideos(uid: uid);
-   log('fetchUserVideos called after deletion');
+    await fetchUserVideos(uid: uid);
+    log('fetchUserVideos called after deletion');
   }
 }

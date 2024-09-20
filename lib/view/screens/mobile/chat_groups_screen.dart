@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:wave_learning_app/model/channel_model.dart';
-import 'package:wave_learning_app/view/screens/mobile/chat_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text_form_field.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/no_data_widget.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
-import 'package:wave_learning_app/view/widgets/mobile/chat_screen_widget/tile_widget.dart';
-import 'package:wave_learning_app/view/widgets/mobile/user_videos_screen_widget/loading_widget.dart';
-import 'package:wave_learning_app/view_model/cubits/chat_cubit/chat_cubit.dart';
+import 'package:wave_learning_app/view/widgets/mobile/chat_groups_screen_widget/after_search.dart';
+import 'package:wave_learning_app/view/widgets/mobile/chat_groups_screen_widget/chat_group_before_searching.dart';
 import 'package:wave_learning_app/view_model/cubits/get_joined_channels/get_joined_channels_cubit.dart';
- 
+import 'package:wave_learning_app/view_model/cubits/search_chat_groups_cubit/search_chat_groups_cubit.dart';
+
 class ChatGroupScreen extends StatefulWidget {
   const ChatGroupScreen({super.key});
 
@@ -23,17 +21,18 @@ class ChatGroupScreen extends StatefulWidget {
 
 class _ChatGroupScreenState extends State<ChatGroupScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
-    context.read<GetJoinedChannelsCubit>().getJoinedChannels(_auth.currentUser!.uid);
+    context
+        .read<GetJoinedChannelsCubit>()
+        .getJoinedChannels(_auth.currentUser!.uid);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController searchController = TextEditingController();
-
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
@@ -46,71 +45,58 @@ class _ChatGroupScreenState extends State<ChatGroupScreen> {
           fontWeight: FontWeight.w500,
         ),
       ),
-      body: Column(
-        children: [
-          CustomContainer(
-            height: 100,
-            width: double.infinity,
-            color: AppColors.primaryColor,
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomTextFormField(
-                labelText: 'Search',
-                fontFamily: Fonts.primaryText,
-                fontWeight: FontWeight.normal,
-                padding: 20,
-                fontSize: 14,
-                textColor: AppColors.secondaryColor,
-                paddingForm: 30,
-                borderRadius: 20,
-                color: AppColors.backgroundColor,
-                controller: searchController,
+      body: SafeArea(
+        child: Column(
+          children: [
+            CustomContainer(
+              height: 100,
+              width: double.infinity,
+              color: AppColors.primaryColor,
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CustomTextFormField(
+                  onChanged: (p0) {
+                    context
+                        .read<SearchChatGroupsCubit>()
+                        .debounceSearchChannel(p0, _auth.currentUser!.uid);
+                  },
+                  labelText: 'Search',
+                  fontFamily: Fonts.primaryText,
+                  fontWeight: FontWeight.normal,
+                  padding: 20,
+                  fontSize: 14,
+                  textColor: AppColors.secondaryColor,
+                  paddingForm: 30,
+                  borderRadius: 20,
+                  color: AppColors.backgroundColor,
+                  controller: searchController,
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: BlocBuilder<GetJoinedChannelsCubit, GetJoinedChannelsState>(
+            BlocBuilder<SearchChatGroupsCubit, SearchChatGroupsState>(
               builder: (context, state) {
-                if (state is LoadingState) {
-                  return const LoadingWidget();
-                } else if (state is PickedJoinChannelsState) {
-                  return ListView.builder(
-                    itemCount: state.channelModelList.length,
-                    itemBuilder: (ctx, index) {
-                      final ChannelModel channel = state.channelModelList[index];
-                      return BlocProvider(
-                        create: (context) => ChatCubit()..fetchChatMessages(channel.documentId.toString()),
-                        child: CustomChatTile(
-                          channel: channel,
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (ctx) => BlocProvider.value(
-                                value: context.read<ChatCubit>(),
-                                child: ChatScreen(
-                                  channelModel: channel,
-                                  uid: _auth.currentUser!.uid,
-                                  name:_auth.currentUser!.displayName! ,
-                                ),
-                              ),
-                            ));
-                          },
+                if (state is SearchChatGroup) {
+                  if (state.listChannel.isEmpty) {
+                    return const SingleChildScrollView(
+                      child: Center(
+                        child: NoDataWidget(
+                          text: 'No search results',
                         ),
-                      );
-                    },
-                  );
-                } else if (state is NoChannelsState) {
-                  return const NoDataWidget();
+                      ),
+                    );
+                  }
+                  return AfterSearch(channelModelList: state.listChannel);
                 } else {
-                  return const NoDataWidget();
+                  return ChatGroupBeforeSearching();
                 }
               },
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
