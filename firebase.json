@@ -1,1 +1,39 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"wave-learning-app","appId":"1:134323372396:android:ec4a08a87948617964f349","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"wave-learning-app","configurations":{"android":"1:134323372396:android:ec4a08a87948617964f349","ios":"1:134323372396:ios:b88de1b2f1808ffb64f349","macos":"1:134323372396:ios:b88de1b2f1808ffb64f349","web":"1:134323372396:web:f1f1f782af119c3b64f349","windows":"1:134323372396:web:0072faa8a628bbd064f349"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "wave-learning-app",
+          "appId": "1:134323372396:android:ec4a08a87948617964f349",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "wave-learning-app",
+          "configurations": {
+            "android": "1:134323372396:android:ec4a08a87948617964f349",
+            "ios": "1:134323372396:ios:b88de1b2f1808ffb64f349",
+            "macos": "1:134323372396:ios:b88de1b2f1808ffb64f349",
+            "web": "1:134323372396:web:f1f1f782af119c3b64f349",
+            "windows": "1:134323372396:web:0072faa8a628bbd064f349"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

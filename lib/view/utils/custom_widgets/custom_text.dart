@@ -24,6 +24,7 @@ class CustomText extends StatelessWidget {
         fontFamily: fontFamily,
         fontWeight: fontWeight,
         overflow: TextOverflow.visible, 
+        
       ),
     );
   }

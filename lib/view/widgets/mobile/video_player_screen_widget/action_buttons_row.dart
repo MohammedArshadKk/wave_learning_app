@@ -33,6 +33,7 @@ class _ActionButtonsRowState extends State<ActionButtonsRow> {
     return Padding(
       padding: const EdgeInsets.only(top: 50),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           BlocBuilder<LikeBloc, LikeState>(
             builder: (context, state) {
@@ -61,16 +62,18 @@ class _ActionButtonsRowState extends State<ActionButtonsRow> {
                 onTap: () {
                   context.read<WatchLaterCubit>().watchLaterButtonCliked(
                       _auth.currentUser!.uid, widget.documentid);
-                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      backgroundColor: state is AddedwatchLaterState ?AppColors.alertColor:Colors.green,
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      backgroundColor: state is AddedwatchLaterState
+                          ? AppColors.alertColor
+                          : Colors.green,
                       content: CustomText(
                           text: state is AddedwatchLaterState
                               ? 'This video has been removed from your watch later list.'
                               : 'This video has been added to your watch later list.',
                           color: AppColors.backgroundColor,
-                          fontSize: 16, 
+                          fontSize: 16,
                           fontFamily: Fonts.primaryText,
-                          fontWeight: FontWeight.w500))); 
+                          fontWeight: FontWeight.w500)));
                 },
                 child: state is AddedwatchLaterState
                     ? const ActionButtonWidget(icon: Icons.bookmark)
@@ -79,12 +82,6 @@ class _ActionButtonsRowState extends State<ActionButtonsRow> {
                       ),
               );
             },
-          ),
-          const SizedBox(
-            width: 50,
-          ),
-          const ActionButtonWidget(
-            icon: Icons.share,
           ),
         ],
       ),

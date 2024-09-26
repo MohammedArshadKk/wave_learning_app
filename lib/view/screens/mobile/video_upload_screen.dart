@@ -53,7 +53,7 @@ class VideoUploadScreen extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              VideoUploadingFileds(
+              VideoUploadingFields(
                 titleController: titleController,
                 videoDescriptionController: videoDescriptionController,
                 tagsController: tagsController,

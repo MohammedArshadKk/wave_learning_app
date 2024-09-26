@@ -63,7 +63,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       videoPlayerController: _videoPlayerController!,
       autoPlay: true,
       looping: true,
-      // Add more Chewie options here as needed
+      
     );
     setState(() {});
   }

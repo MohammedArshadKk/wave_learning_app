@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:wave_learning_app/model/channel_model.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
@@ -15,6 +16,7 @@ class CustomChatTile extends StatelessWidget {
   });
   final ChannelModel channel;
   final VoidCallback onTap;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -24,9 +26,16 @@ class CustomChatTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 30,
-              backgroundImage: NetworkImage(channel.channelIconUrl.toString()),
+            ClipOval(
+              child: CachedNetworkImage(
+                imageUrl: channel.channelIconUrl.toString(),
+                width: 60,
+                height: 60,
+                fit: BoxFit.cover,
+                placeholder: (context, url) =>
+                     const Icon(Icons.person),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -73,8 +82,8 @@ class CustomChatTile extends StatelessWidget {
                               }
                             } else if (lastMessage['type'] == 'document') {
                               text = 'document';
-                            }else if(lastMessage['type']=='meeting'){
-                              text='video conference link';
+                            } else if (lastMessage['type'] == 'meeting') {
+                              text = 'video conference link';
                             }
 
                             return CustomText(

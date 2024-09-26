@@ -25,10 +25,8 @@ class _ChatGroupScreenState extends State<ChatGroupScreen> {
 
   @override
   void initState() {
-    context
-        .read<GetJoinedChannelsCubit>()
-        .getJoinedChannels(_auth.currentUser!.uid);
     super.initState();
+    context.read<GetJoinedChannelsCubit>().getJoinedChannels(_auth.currentUser!.uid);
   }
 
   @override
@@ -60,9 +58,7 @@ class _ChatGroupScreenState extends State<ChatGroupScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: CustomTextFormField(
                   onChanged: (p0) {
-                    context
-                        .read<SearchChatGroupsCubit>()
-                        .debounceSearchChannel(p0, _auth.currentUser!.uid);
+                    context.read<SearchChatGroupsCubit>().debounceSearchChannel(p0, _auth.currentUser!.uid);
                   },
                   labelText: 'Search',
                   fontFamily: Fonts.primaryText,
@@ -77,23 +73,24 @@ class _ChatGroupScreenState extends State<ChatGroupScreen> {
                 ),
               ),
             ),
-            BlocBuilder<SearchChatGroupsCubit, SearchChatGroupsState>(
-              builder: (context, state) {
-                if (state is SearchChatGroup) {
-                  if (state.listChannel.isEmpty) {
-                    return const SingleChildScrollView(
-                      child: Center(
+            // Ensure that the BlocBuilder is inside an Expanded widget
+            Expanded(
+              child: BlocBuilder<SearchChatGroupsCubit, SearchChatGroupsState>(
+                builder: (context, state) {
+                  if (state is SearchChatGroup) {
+                    if (state.listChannel.isEmpty) {
+                      return const Center(
                         child: NoDataWidget(
                           text: 'No search results',
                         ),
-                      ),
-                    );
+                      );
+                    }
+                    return AfterSearch(channelModelList: state.listChannel);
+                  } else {
+                    return ChatGroupBeforeSearching();
                   }
-                  return AfterSearch(channelModelList: state.listChannel);
-                } else {
-                  return ChatGroupBeforeSearching();
-                }
-              },
+                },
+              ),
             ),
           ],
         ),

@@ -11,22 +11,36 @@ class WebProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final crossAxisCount = screenWidth > 1200 ? 4 : (screenWidth > 800 ? 3 : 2);
+
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      body: Expanded(
-        child: GridView.count(
-          crossAxisCount: 3,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-          padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
-          children: const [
-            GridHistoryWedget(),
-            GridLikeWidget(),
-            GridWatchLaterWidget(),
-            GridUserVideosWidget(),
-            GridSettingsWidget(),
-          ],
-        ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: GridView.count(
+                  crossAxisCount: crossAxisCount,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: const [
+                    GridHistoryWedget(),
+                    GridLikeWidget(),
+                    GridWatchLaterWidget(),
+                    GridUserVideosWidget(),
+                    GridSettingsWidget(),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

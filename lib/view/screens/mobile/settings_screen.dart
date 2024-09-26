@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wave_learning_app/view/screens/common_screens/terms_and_conditions_screen.dart';
 import 'package:wave_learning_app/view/screens/mobile/mobile_login_screen.dart';
+import 'package:wave_learning_app/view/screens/web/web_login_screen.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/app_bar_text.dart';
 import 'package:wave_learning_app/view/widgets/mobile/settings_widgets/settings_itoms_widgets.dart';
@@ -37,8 +39,6 @@ class SettingsScreen extends StatelessWidget {
               child: const SettingsItomsWidgets(
                   text: 'share with friends', icon: Icons.share),
             ),
-            const SettingsItomsWidgets(
-                text: 'About as', icon: Icons.info_outline),
             GestureDetector(
               onTap: () {
                 launchUrl(Uri.parse(
@@ -69,11 +69,18 @@ class SettingsScreen extends StatelessWidget {
                       confirmButtonText: 'Logout',
                       cancelButtonText: "cancel", onTapConfirm: () async {
                     await _auth.signOut();
-                    Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                          builder: (ctx) => const MobileLoginScreen()),
-                      (route) => false,
-                    );
+                    if (kIsWeb) {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (ctx) => WebLoginScreen()),
+                        (route) => false,
+                      );
+                    } else {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (ctx) => const MobileLoginScreen()),
+                        (route) => false,
+                      );
+                    }
                   }, onTapCancel: () {
                     Navigator.pop(context);
                   }, panaraDialogType: PanaraDialogType.error);

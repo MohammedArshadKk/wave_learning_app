@@ -8,7 +8,6 @@ import 'package:wave_learning_app/view/utils/custom_widgets/custom_button.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_loading.dart';
 import 'package:wave_learning_app/view/widgets/mobile/video_upload_widgets/add_thumbnail_widget.dart';
 import 'package:wave_learning_app/view/widgets/mobile/video_upload_widgets/app_bar_title.dart';
-import 'package:wave_learning_app/view/widgets/mobile/video_upload_widgets/check_box_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/background_service_cubit/video_upload_background_cubit.dart';
 import 'package:wave_learning_app/view_model/blocs/video_uploading_bloc/video_uploading_bloc.dart';
 
@@ -50,7 +49,7 @@ class AddThumbnailScreen extends StatelessWidget {
             },
             child: const AddThumbnailWidget(),
           ),
-          const CheckBoxWidget(),
+    
           GestureDetector(
             onTap: () async {
               if (thumbnail == null) {
