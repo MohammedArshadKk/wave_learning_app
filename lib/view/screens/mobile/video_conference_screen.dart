@@ -1,8 +1,6 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
+// import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
 
 class VideoConferenceScreen extends StatelessWidget {
   const VideoConferenceScreen(
@@ -22,13 +20,14 @@ class VideoConferenceScreen extends StatelessWidget {
     
 
     return SafeArea(
-      child: ZegoUIKitPrebuiltVideoConference(
-          appID: appID,
-          appSign: appSign,
-          conferenceID: conferenceID,
-          userID: uid,
-          userName: username, 
-          config: ZegoUIKitPrebuiltVideoConferenceConfig()),
+      // child: ZegoUIKitPrebuiltVideoConference(
+      //     appID: appID,
+      //     appSign: appSign,
+      //     conferenceID: conferenceID,
+      //     userID: uid,
+      //     userName: username, 
+      //     config: ZegoUIKitPrebuiltVideoConferenceConfig()),
+      child: Container(),
     );
   }
 }

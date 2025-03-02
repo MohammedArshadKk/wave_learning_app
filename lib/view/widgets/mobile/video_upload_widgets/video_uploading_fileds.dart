@@ -27,7 +27,7 @@ class VideoUploadingFields extends StatelessWidget {
             labelText: 'Enter video title',
             fontFamily: Fonts.primaryText,
             fontWeight: FontWeight.normal,
-            padding: 20,
+            padding: 20, 
             fontSize: 12,
             textColor: AppColors.lightTextColor,
             paddingForm: 30,

@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +13,6 @@ import 'package:wave_learning_app/view/utils/icons.dart';
 import 'package:wave_learning_app/view/widgets/mobile/home_widgets/drawer_widget.dart';
 import 'package:wave_learning_app/view/widgets/web/user_info_widget.dart';
 import 'package:wave_learning_app/view/widgets/web/web_navigation_widget.dart/icons_widget.dart';
-import 'package:wave_learning_app/view/widgets/web/web_navigation_widget.dart/search_bar_widget.dart';
 import 'package:wave_learning_app/view_model/cubits/get_joined_channels/get_joined_channels_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/search_videos_cubit/search_videos_cubit.dart';
 import 'package:wave_learning_app/view_model/cubits/web_navigation_cubit/web_navigation_cubit.dart';

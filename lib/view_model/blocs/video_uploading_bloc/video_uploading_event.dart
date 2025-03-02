@@ -11,5 +11,18 @@ class PickThumbnailEvent extends VideoUploadingEvent {}
 
 class GenerateThumbnailesEvent extends VideoUploadingEvent {
   final String videoPath;
+
   GenerateThumbnailesEvent({required this.videoPath});
+}
+
+class UploadVideoEvent extends VideoUploadingEvent {
+  final VideoModel videoModel;
+  final String thumbnailPath;
+  final String videoPath;
+
+  UploadVideoEvent({
+    required this.videoModel,
+    required this.thumbnailPath,
+    required this.videoPath,
+  });
 }

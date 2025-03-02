@@ -10,14 +10,14 @@ part 'get_all_videos_state.dart';
 class GetAllVideosCubit extends Cubit<GetAllVideosState> {
   GetAllVideosCubit() : super(GetAllVideosInitial());
   Future<void> getAllVideos() async {
-    emit(AllVideoFetchingLoadingState());
+    emit(AllVideoFetchingLoadingState()); 
     try {
       final FirebaseFirestore db = FirebaseFirestore.instance;
       final QuerySnapshot querySnapshot =
-          await db.collection('channelVideos').limit(10).get();
+          await db.collection('channelVideos').where('isUploaded', isEqualTo: true).limit(10).get();
       if (querySnapshot.docs.isEmpty) {
         emit(NoVideosState());
-      } else {
+      } else {    
         List<VideoModel> videos = querySnapshot.docs.map((docs) {
           return VideoModel.fromMap(docs.data() as Map<String, dynamic>,
               documentid: docs.id);

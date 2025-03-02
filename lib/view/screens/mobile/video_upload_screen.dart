@@ -43,7 +43,7 @@ class VideoUploadScreen extends StatelessWidget {
                     return const CircularProgressIndicator();
                   } else if (state is VideoPikingerrorState) {
                     return const Center(
-                      child: Text('errror'),
+                      child: Text('error'),
                     );
                   } else {
                     return const VideoUploadImageWidget();

@@ -12,7 +12,11 @@ class VideoModel {
   final String? documentid;
   final List<String> watchLater;
   final List<String> views;
-
+  final bool hasPayment;
+  final String? progress;
+  final bool isUploaded;
+  final String videoPath;
+  final String price;
   VideoModel({
     required this.title,
     required this.description,
@@ -25,8 +29,13 @@ class VideoModel {
     required this.time,
     required this.watchLater,
     required this.views,
+    required this.hasPayment,
+    required this.isUploaded,
+    required this.videoPath,
+    required this.price,
     this.tags,
     this.documentid,
+    this.progress,
   });
 
   Map<String, dynamic> toMap() {
@@ -44,23 +53,34 @@ class VideoModel {
       'documentid': documentid,
       'watchLater': watchLater,
       'views': views,
+      'hasPayment': hasPayment,
+      'progress': progress,
+      'isUploaded': isUploaded,
+      'videoPath': videoPath,
+      'price': price
     };
   }
 
   factory VideoModel.fromMap(Map<String, dynamic> map, {String? documentid}) {
     return VideoModel(
-        title: map['title'] ?? '',
-        uid: map['uid'] ?? '',
-        channelName: map['channelName'] ?? '',
-        description: map['description'] ?? '',
-        email: map['email'] ?? '',
-        tags: map['tags'] != null ? List<String>.from(map['tags']) : null,
-        likes: List<String>.from(map['likes'] ?? []),
-        videoUrl: map['videoUrl'] ?? '',
-        thumbnailUrl: map['thumbnailUrl'] ?? '',
-        time: map['time'] ?? '',
-        documentid: documentid,
-        watchLater: List<String>.from(map['watchLater'] ?? []),
-        views: List<String>.from(map['views'] ?? []));  
+      title: map['title'] ?? '',
+      uid: map['uid'] ?? '',
+      channelName: map['channelName'] ?? '',
+      description: map['description'] ?? '',
+      email: map['email'] ?? '',
+      tags: map['tags'] != null ? List<String>.from(map['tags']) : null,
+      likes: List<String>.from(map['likes'] ?? []),
+      videoUrl: map['videoUrl'] ?? '',
+      thumbnailUrl: map['thumbnailUrl'] ?? '',
+      time: map['time'] ?? '',
+      documentid: documentid,
+      watchLater: List<String>.from(map['watchLater'] ?? []),
+      views: List<String>.from(map['views'] ?? []),
+      hasPayment: map['hasPayment'] ?? false,
+      progress: map['progress'] ?? '0',
+      isUploaded: map['isUploaded'] ?? false,
+      videoPath: map['videoPath'] ?? "",
+      price: map['price'] ?? "", 
+    );
   }
 }

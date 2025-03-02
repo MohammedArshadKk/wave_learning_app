@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wave_learning_app/view/utils/colors.dart';
-import 'package:wave_learning_app/view/utils/custom_widgets/custom_image_asset.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_text.dart';
 import 'package:wave_learning_app/view/utils/images_fonts.dart';
 
@@ -11,7 +10,7 @@ class LoginImageWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     // var screenWidth = screenSize.width;
-    var screenHeight = screenSize.height;
+    var screenHeight = screenSize.height;    
     return Column(
       children: [
         Image.asset(AppImages.signInImage),

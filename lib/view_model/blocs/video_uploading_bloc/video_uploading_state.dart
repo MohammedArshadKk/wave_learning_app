@@ -27,3 +27,8 @@ class ThumbnailGeneratedState extends VideoUploadingState {
   final String thumbnail;
   ThumbnailGeneratedState({required this.thumbnail});
 }
+
+class VideoUploadLoadingState extends VideoUploadingState {}
+class VideodetailsUploadedState extends VideoUploadingState {}
+
+

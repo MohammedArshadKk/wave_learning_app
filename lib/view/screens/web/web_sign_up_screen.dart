@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_learning_app/view/screens/common_screens/custom_bottom_navigation_bar.dart';
 import 'package:wave_learning_app/view/screens/web/web_login_screen.dart';
 import 'package:wave_learning_app/view/screens/web/web_navigation.dart';
 import 'package:wave_learning_app/view/screens/web/web_verification_screen.dart';

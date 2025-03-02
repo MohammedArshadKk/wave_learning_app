@@ -61,7 +61,6 @@ class TermsAndConditionsScreen extends StatelessWidget {
               Text(
                 'The Wave Learning App is strictly for educational purposes. All videos uploaded must be relevant to education and learning. Entertainment, inappropriate, or irrelevant content is strictly prohibited.',
               ),
-              // Add more sections as necessary
               SizedBox(height: 16),
               Text(
                 '4. Channel Creation and Usage',

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -68,6 +69,7 @@ class SettingsScreen extends StatelessWidget {
                       message: 'Are you sure you want to logout?',
                       confirmButtonText: 'Logout',
                       cancelButtonText: "cancel", onTapConfirm: () async {
+                    await GoogleSignIn().signOut();
                     await _auth.signOut();
                     if (kIsWeb) {
                       Navigator.of(context).pushAndRemoveUntil(

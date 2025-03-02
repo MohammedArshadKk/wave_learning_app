@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:wave_learning_app/view/utils/custom_widgets/custom_container.dart';
-import 'package:wave_learning_app/view/utils/images_fonts.dart';
 
 class ImageAuthWeb extends StatelessWidget {
   const ImageAuthWeb({super.key, required this.image});

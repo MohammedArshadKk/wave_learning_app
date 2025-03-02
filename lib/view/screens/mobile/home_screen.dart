@@ -84,19 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
-          // Expanded(
-          //   child: BlocBuilder<GetLatestJoinedChannelVideosCubit,
-          //       GetLatestJoinedChannelVideosState>(
-          //     builder: (context, state) {
-          //       if (state is LoadingGetLatestVideosState) {
-          //         return const HomeLoading();
-          //       } else if (state is PikedState) {
-          //         return ListOfVideosWidget(videos: state.videos);
-          //       }
-          //       return Container(); 
-          //     },
-          //   ),
-          // ),
+        
           BlocBuilder<GetAllVideosCubit, GetAllVideosState>(
             builder: (context, state) {
               if (state is AllVideoFetchingLoadingState) {

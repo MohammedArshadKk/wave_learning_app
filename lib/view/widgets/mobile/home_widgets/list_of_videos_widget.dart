@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wave_learning_app/model/video_model.dart';
@@ -22,7 +24,7 @@ class ListOfVideosWidget extends StatelessWidget {
           double maxContainerWidth = constraints.maxWidth;
           if (constraints.maxWidth > 1200) {
             crossAxisCount = 3;
-            maxContainerWidth = constraints.maxWidth * 0.8; 
+            maxContainerWidth = constraints.maxWidth * 0.8;
           } else if (constraints.maxWidth > 600) {
             crossAxisCount = 2;
           }
@@ -41,10 +43,11 @@ class ListOfVideosWidget extends StatelessWidget {
                 itemBuilder: (ctx, index) {
                   final video = videos[index];
                   final difference = calculateTimeDiff(video.time);
-                  String title = video.title.length > 35 
+                  String title = video.title.length > 35
                       ? "${video.title.substring(0, 30)}....."
                       : video.title;
-
+                  bool hasPayment = video.hasPayment;
+                  log(hasPayment.toString());
                   return GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
@@ -76,26 +79,37 @@ class ListOfVideosWidget extends StatelessWidget {
                             child: Stack(
                               fit: StackFit.expand,
                               children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-                                  child: CachedNetworkImage(
-                                    imageUrl: video.thumbnailUrl,
-                                    fit: BoxFit.cover,
-                                    placeholder: (context, url) => Container(
-                                      color: Colors.grey[200],
-                                      child: const Center(child: CircularProgressIndicator()),
-                                    ),
-                                    errorWidget: (context, url, error) => Container(
-                                      color: Colors.grey[200],
-                                      child: const Icon(Icons.error),
-                                    ),
-                                  ),
-                                ),
+                                hasPayment
+                                    ? Center(
+                                        child: Icon(Icons.lock_outline, size: 50,), 
+                                      )
+                                    : ClipRRect(
+                                        borderRadius:
+                                            const BorderRadius.vertical(
+                                                top: Radius.circular(12)),
+                                        child: CachedNetworkImage(
+                                          imageUrl: video.thumbnailUrl,
+                                          fit: BoxFit.fitHeight,
+                                          placeholder: (context, url) =>
+                                              Container(
+                                            color: Colors.grey[200],
+                                            child: const Center(
+                                                child:
+                                                    CircularProgressIndicator()),
+                                          ),
+                                          errorWidget: (context, url, error) =>
+                                              Container(
+                                            color: Colors.grey[200],
+                                            child: const Icon(Icons.error),
+                                          ),
+                                        ),
+                                      ),
                                 Positioned(
                                   bottom: 8,
                                   right: 8,
                                   child: Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 4),
                                     decoration: BoxDecoration(
                                       color: Colors.black.withOpacity(0.7),
                                       borderRadius: BorderRadius.circular(4),
@@ -131,29 +145,43 @@ class ListOfVideosWidget extends StatelessWidget {
                                   const SizedBox(height: 8),
                                   Expanded(
                                     child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
                                         FutureBuilder(
                                           future: getChannel(video.uid),
                                           builder: (context, snapshot) {
-                                            if (snapshot.connectionState == ConnectionState.waiting) {
-                                              return const SizedBox(width: 32, height: 32);
+                                            if (snapshot.connectionState ==
+                                                ConnectionState.waiting) {
+                                              return const SizedBox(
+                                                  width: 32, height: 32);
                                             } else {
-                                              final channelData = snapshot.data!.docs[0].data() as Map<String, dynamic>;
-                                              final channelIcon = channelData['channelIconUrl'];
+                                              final channelData =
+                                                  snapshot.data!.docs[0].data()
+                                                      as Map<String, dynamic>;
+                                              final channelIcon =
+                                                  channelData['channelIconUrl'];
                                               return ClipOval(
                                                 child: Container(
                                                   height: 50,
-                                                  width: 50, 
+                                                  width: 50,
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
-                                                    color: AppColors.backgroundColor,
-                                                    border: Border.all(color: Colors.grey[300]!), 
+                                                    color: AppColors
+                                                        .backgroundColor,
+                                                    border: Border.all(
+                                                        color:
+                                                            Colors.grey[300]!),
                                                   ),
                                                   child: CachedNetworkImage(
                                                     imageUrl: channelIcon,
-                                                    placeholder: (context, url) => const SizedBox(),
-                                                    errorWidget: (context, url, error) => const Icon(Icons.person),
+                                                    placeholder:
+                                                        (context, url) =>
+                                                            const SizedBox(),
+                                                    errorWidget:
+                                                        (context, url, error) =>
+                                                            const Icon(
+                                                                Icons.person),
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),
@@ -166,17 +194,24 @@ class ListOfVideosWidget extends StatelessWidget {
                                           child: FutureBuilder(
                                             future: getChannel(video.uid),
                                             builder: (context, snapshot) {
-                                              if (snapshot.connectionState == ConnectionState.waiting) {
+                                              if (snapshot.connectionState ==
+                                                  ConnectionState.waiting) {
                                                 return const SizedBox.shrink();
                                               } else {
-                                                final channelData = snapshot.data!.docs[0].data() as Map<String, dynamic>;
-                                                final channelName = channelData['channelName'] ?? 'Unknown Channel';
+                                                final channelData = snapshot
+                                                        .data!.docs[0]
+                                                        .data()
+                                                    as Map<String, dynamic>;
+                                                final channelName = channelData[
+                                                        'channelName'] ??
+                                                    'Unknown Channel';
                                                 return CustomText(
                                                   text: channelName,
-                                                  color: Colors.grey[600]!,
-                                                  fontSize: 12,
+                                                  color:
+                                                      AppColors.secondaryColor,
+                                                  fontSize: 20,
                                                   fontFamily: Fonts.primaryText,
-                                                  fontWeight: FontWeight.w400,
+                                                  fontWeight: FontWeight.w600,
                                                 );
                                               }
                                             },

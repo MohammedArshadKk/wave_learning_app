@@ -1,10 +1,9 @@
-import 'package:better_player/better_player.dart';
 import 'package:chewie/chewie.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:video_player/video_player.dart'; 
+import 'package:video_player/video_player.dart';
 import 'package:wave_learning_app/model/channel_model.dart';
 import 'package:wave_learning_app/model/video_model.dart';
 import 'package:wave_learning_app/services/repositories/channel%20services/get_channel.dart';
@@ -23,10 +22,10 @@ import 'package:wave_learning_app/view_model/cubits/history_cubit/history_cubit.
 
 class VideoPlayerScreen extends StatefulWidget {
   const VideoPlayerScreen({
-    Key? key,
+    super.key,
     required this.videoModel,
     required this.timeDiff,
-  }) : super(key: key);
+  });
 
   final VideoModel videoModel;
   final String timeDiff;
@@ -36,7 +35,6 @@ class VideoPlayerScreen extends StatefulWidget {
 }
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-  late BetterPlayerController _betterPlayerController;
   VideoPlayerController? _videoPlayerController;
   ChewieController? _chewieController;
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -48,28 +46,20 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         _auth.currentUser!.uid, widget.videoModel.documentid.toString());
     context.read<HistoryCubit>().addToHistory(
         _auth.currentUser!.uid, widget.videoModel.documentid.toString());
-    
-    if (kIsWeb) {
-      initializeChewiePlayer();
-    } else {
-      initializeBetterPlayer();
-    }
+
+    initializeChewiePlayer();
   }
 
   Future<void> initializeChewiePlayer() async {
-    _videoPlayerController = VideoPlayerController.network(widget.videoModel.videoUrl);
+    _videoPlayerController =
+        VideoPlayerController.networkUrl(Uri.parse(widget.videoModel.videoUrl));
     await _videoPlayerController!.initialize();
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController!,
       autoPlay: true,
       looping: true,
-      
     );
     setState(() {});
-  }
-
-  void initializeBetterPlayer() {
-    _betterPlayerController = videoConfigtration(widget.videoModel.videoUrl);
   }
 
   @override
@@ -80,13 +70,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           child: Column(
             children: [
               AspectRatio(
-                aspectRatio: 16 / 9,
-                child: kIsWeb
-                    ? (_chewieController != null
-                        ? Chewie(controller: _chewieController!)
-                        : const Center(child: CircularProgressIndicator()))
-                    : BetterPlayer(controller: _betterPlayerController),
-              ),
+                  aspectRatio: 16 / 9,
+                  child: (_chewieController != null
+                      ? Chewie(controller: _chewieController!)
+                      : const Center(child: CircularProgressIndicator()))),
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Column(
@@ -106,7 +93,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                     FutureBuilder(
                       future: getChannel(widget.videoModel.uid),
                       builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
                           return const LoadingWidget();
                         }
                         if (snapshot.hasError) {
@@ -116,10 +104,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                           return const Text('No channel data available');
                         } else {
                           final docSnapshot = snapshot.data!.docs[0];
-                          final data = docSnapshot.data() as Map<String, dynamic>;
+                          final data =
+                              docSnapshot.data() as Map<String, dynamic>;
                           final String documentId = docSnapshot.id;
 
-                          final ChannelModel channelModel = ChannelModel.formMap(
+                          final ChannelModel channelModel =
+                              ChannelModel.formMap(
                             data,
                             documentId: documentId,
                           );
@@ -138,7 +128,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                               child: ChannelDetialsWidget(
                                 channelName: channelModel.channelName,
                                 iconUrl: channelModel.channelIconUrl.toString(),
-                                totalVideos: channelModel.members.length.toString(),
+                                totalVideos:
+                                    channelModel.members.length.toString(),
                                 documentId: channelModel.documentId.toString(),
                               ),
                             ),
@@ -170,12 +161,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   void dispose() {
-    if (kIsWeb) {
-      _videoPlayerController?.dispose();
-      _chewieController?.dispose();
-    } else {
-      _betterPlayerController.dispose();
-    }
+    _videoPlayerController?.dispose();
+    _chewieController?.dispose();
     super.dispose();
   }
 }
